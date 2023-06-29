@@ -14,6 +14,11 @@
 		E6E5CB4C2A4D523A00EA0031 /* swiftui_reusableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB4B2A4D523A00EA0031 /* swiftui_reusableTests.swift */; };
 		E6E5CB562A4D523A00EA0031 /* swiftui_reusableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB552A4D523A00EA0031 /* swiftui_reusableUITests.swift */; };
 		E6E5CB582A4D523A00EA0031 /* swiftui_reusableUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB572A4D523A00EA0031 /* swiftui_reusableUITestsLaunchTests.swift */; };
+		E6E5CB682A4D55BF00EA0031 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB672A4D55BF00EA0031 /* CustomTextField.swift */; };
+		E6E5CB6A2A4D5F8F00EA0031 /* CustomLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB692A4D5F8F00EA0031 /* CustomLoginView.swift */; };
+		E6E5CB6C2A4D61AD00EA0031 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB6B2A4D61AD00EA0031 /* CustomButton.swift */; };
+		E6E5CB6F2A4D73A700EA0031 /* TextfieldModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB6E2A4D73A700EA0031 /* TextfieldModifiers.swift */; };
+		E6E5CB712A4D9D7B00EA0031 /* Vaildation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB702A4D9D7B00EA0031 /* Vaildation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		E6E5CB512A4D523A00EA0031 /* swiftui-reusableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swiftui-reusableUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5CB552A4D523A00EA0031 /* swiftui_reusableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_reusableUITests.swift; sourceTree = "<group>"; };
 		E6E5CB572A4D523A00EA0031 /* swiftui_reusableUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_reusableUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E6E5CB672A4D55BF00EA0031 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		E6E5CB692A4D5F8F00EA0031 /* CustomLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginView.swift; sourceTree = "<group>"; };
+		E6E5CB6B2A4D61AD00EA0031 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E6E5CB6E2A4D73A700EA0031 /* TextfieldModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldModifiers.swift; sourceTree = "<group>"; };
+		E6E5CB702A4D9D7B00EA0031 /* Vaildation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vaildation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,7 @@
 		E6E5CB392A4D523900EA0031 /* swiftui-reusable */ = {
 			isa = PBXGroup;
 			children = (
+				E6E5CB642A4D554000EA0031 /* UI */,
 				E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */,
 				E6E5CB3C2A4D523900EA0031 /* ContentView.swift */,
 				E6E5CB3E2A4D523A00EA0031 /* Assets.xcassets */,
@@ -125,6 +136,42 @@
 				E6E5CB572A4D523A00EA0031 /* swiftui_reusableUITestsLaunchTests.swift */,
 			);
 			path = "swiftui-reusableUITests";
+			sourceTree = "<group>";
+		};
+		E6E5CB642A4D554000EA0031 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E6E5CB6D2A4D739000EA0031 /* Helpers */,
+				E6E5CB662A4D55AD00EA0031 /* Screens */,
+				E6E5CB652A4D554800EA0031 /* Components */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E6E5CB652A4D554800EA0031 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E6E5CB672A4D55BF00EA0031 /* CustomTextField.swift */,
+				E6E5CB6B2A4D61AD00EA0031 /* CustomButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E6E5CB662A4D55AD00EA0031 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E6E5CB692A4D5F8F00EA0031 /* CustomLoginView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E6E5CB6D2A4D739000EA0031 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E6E5CB6E2A4D73A700EA0031 /* TextfieldModifiers.swift */,
+				E6E5CB702A4D9D7B00EA0031 /* Vaildation.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +306,11 @@
 			files = (
 				E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */,
 				E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */,
+				E6E5CB6F2A4D73A700EA0031 /* TextfieldModifiers.swift in Sources */,
+				E6E5CB682A4D55BF00EA0031 /* CustomTextField.swift in Sources */,
+				E6E5CB712A4D9D7B00EA0031 /* Vaildation.swift in Sources */,
+				E6E5CB6A2A4D5F8F00EA0031 /* CustomLoginView.swift in Sources */,
+				E6E5CB6C2A4D61AD00EA0031 /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

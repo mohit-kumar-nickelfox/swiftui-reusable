@@ -9,13 +9,28 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        
+        CustomLoginView(
+            loginAction: loginAction,
+            forgotPasswordAction: forgotPasswordTapped,
+            signupAction: signupTapped,
+            userIdTitle: "Email",
+            userIdPlaceholder: "test@example.com",
+            passwordTitle: "Password",
+            userId: .constant(""),
+            password: .constant(""))
+    }
+    
+    func loginAction() {
+        print("Login Tapped")
+    }
+    
+    func signupTapped() {
+        print("SignUp Tapped")
+    }
+    
+    func forgotPasswordTapped() {
+        print("Forgot password tapped")
     }
 }
 
