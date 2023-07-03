@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E60744502A52A19600FBE7A2 /* CustomLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607444F2A52A19600FBE7A2 /* CustomLoginViewModel.swift */; };
+		E60744532A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744522A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift */; };
+		E60744582A52AD8F00FBE7A2 /* LoginViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744572A52AD8F00FBE7A2 /* LoginViewExample.swift */; };
+		E607445F2A52D0F700FBE7A2 /* SegmentedLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607445E2A52D0F700FBE7A2 /* SegmentedLoginView.swift */; };
+		E60744612A52D6FA00FBE7A2 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744602A52D6FA00FBE7A2 /* LoginType.swift */; };
 		E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */; };
 		E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3C2A4D523900EA0031 /* ContentView.swift */; };
 		E6E5CB3F2A4D523A00EA0031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5CB3E2A4D523A00EA0031 /* Assets.xcassets */; };
@@ -39,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E607444F2A52A19600FBE7A2 /* CustomLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginViewModel.swift; sourceTree = "<group>"; };
+		E60744522A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginViewUIProtocol.swift; sourceTree = "<group>"; };
+		E60744572A52AD8F00FBE7A2 /* LoginViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewExample.swift; sourceTree = "<group>"; };
+		E607445E2A52D0F700FBE7A2 /* SegmentedLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedLoginView.swift; sourceTree = "<group>"; };
+		E60744602A52D6FA00FBE7A2 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
 		E6E5CB372A4D523900EA0031 /* swiftui-reusable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-reusable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_reusableApp.swift; sourceTree = "<group>"; };
 		E6E5CB3C2A4D523900EA0031 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +91,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E60744512A52A45B00FBE7A2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E607445B2A52B25200FBE7A2 /* Views */,
+				E607445A2A52B23E00FBE7A2 /* Protocols */,
+				E60744592A52B23100FBE7A2 /* ViewModels */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E60744542A52AD6600FBE7A2 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				E60744572A52AD8F00FBE7A2 /* LoginViewExample.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		E60744592A52B23100FBE7A2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E607444F2A52A19600FBE7A2 /* CustomLoginViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E607445A2A52B23E00FBE7A2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E60744522A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E607445B2A52B25200FBE7A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E6E5CB692A4D5F8F00EA0031 /* CustomLoginView.swift */,
+				E607445E2A52D0F700FBE7A2 /* SegmentedLoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E6E5CB2E2A4D523900EA0031 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +194,7 @@
 		E6E5CB642A4D554000EA0031 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E60744542A52AD6600FBE7A2 /* Example */,
 				E6E5CB6D2A4D739000EA0031 /* Helpers */,
 				E6E5CB662A4D55AD00EA0031 /* Screens */,
 				E6E5CB652A4D554800EA0031 /* Components */,
@@ -160,7 +214,7 @@
 		E6E5CB662A4D55AD00EA0031 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				E6E5CB692A4D5F8F00EA0031 /* CustomLoginView.swift */,
+				E60744512A52A45B00FBE7A2 /* Login */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -170,6 +224,7 @@
 			children = (
 				E6E5CB6E2A4D73A700EA0031 /* TextfieldModifiers.swift */,
 				E6E5CB702A4D9D7B00EA0031 /* Vaildation.swift */,
+				E60744602A52D6FA00FBE7A2 /* LoginType.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -305,12 +360,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */,
+				E60744612A52D6FA00FBE7A2 /* LoginType.swift in Sources */,
 				E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */,
 				E6E5CB6F2A4D73A700EA0031 /* TextfieldModifiers.swift in Sources */,
 				E6E5CB682A4D55BF00EA0031 /* CustomTextField.swift in Sources */,
 				E6E5CB712A4D9D7B00EA0031 /* Vaildation.swift in Sources */,
+				E607445F2A52D0F700FBE7A2 /* SegmentedLoginView.swift in Sources */,
+				E60744502A52A19600FBE7A2 /* CustomLoginViewModel.swift in Sources */,
+				E60744532A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift in Sources */,
 				E6E5CB6A2A4D5F8F00EA0031 /* CustomLoginView.swift in Sources */,
 				E6E5CB6C2A4D61AD00EA0031 /* CustomButton.swift in Sources */,
+				E60744582A52AD8F00FBE7A2 /* LoginViewExample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
