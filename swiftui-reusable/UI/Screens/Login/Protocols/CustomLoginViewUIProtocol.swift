@@ -73,6 +73,33 @@ protocol CustomLoginViewUIProtocol {
 //    /// - Returns: Font Weight
 //    func inputTextFontWeightForPassword() -> Font.Weight
     
+    //--------------------------------------------------------------------------------------
+    // Phone Textfield
+    
+    /// Color for UserId Heading
+    /// - Returns: SwiftUI Color
+    func headingTextColorForPhoneTextfield() -> Color
+    
+    /// Font for UserId Heading
+    /// - Returns: SwiftUI Font
+    func headingTextFontForPhoneTextfield() -> Font
+    
+    /// Border Width for UserId Textfield
+    /// - Returns: Border Width
+    func borderWidthForPhoneTextfield() -> Double
+    
+    /// Border Color for UserId Textfield
+    /// - Returns: Border Color
+    func borderColorForPhoneTextfield() -> Color
+    
+    /// Corner Radius for UserId Textfield
+    /// - Returns: Corner Radius
+    func cornerRadiusForPhoneTextfield() -> Double
+    
+    /// Input Text Font for UserId Textfield
+    /// - Returns: Font
+    func inputTextFontForPhoneTextfield() -> Font
+    
     
     //------------------------------------------------------------------------------------------
     // Forgot Password

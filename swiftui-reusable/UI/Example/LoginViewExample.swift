@@ -8,20 +8,30 @@
 import SwiftUI
 
 struct LoginViewExample: View {
+    
+    @State var userId: String = ""
+    @State var password: String = ""
+    @State var phone: String = ""
+    
+    var viewModel = CustomLoginViewModel()
     var body: some View {
         loginView()
     }
     
     func loginView() -> some View {
+        viewModel.delegate = self
         var loginView = CustomLoginView(
+            viewModel: viewModel,
             loginAction: loginAction,
             forgotPasswordAction: forgotPasswordTapped,
             signupAction: signupTapped,
             userIdTitle: "Email",
             userIdPlaceholder: "test@example.com",
             passwordTitle: "Password",
-            userId: .constant(""),
-            password: .constant(""))
+            phoneTitle: "Phone",
+            userId: self.$userId,
+            password: self.$password,
+            phone: self.$phone)
         
         loginView.delegate = self
         
@@ -30,6 +40,8 @@ struct LoginViewExample: View {
     
     func loginAction() {
         print("Login Tapped")
+        self.viewModel.errorMessage = "Something went wrong from email"
+        
     }
     
     func signupTapped() {
@@ -47,7 +59,32 @@ struct LoginViewExample_Previews: PreviewProvider {
     }
 }
 
+// MARK: CustomLoginViewUIProtocol
 extension LoginViewExample: CustomLoginViewUIProtocol {
+    func headingTextColorForPhoneTextfield() -> Color {
+        return .black
+    }
+    
+    func headingTextFontForPhoneTextfield() -> Font {
+        return .subheadline
+    }
+    
+    func borderWidthForPhoneTextfield() -> Double {
+        return 1
+    }
+    
+    func borderColorForPhoneTextfield() -> Color {
+        return .black
+    }
+    
+    func cornerRadiusForPhoneTextfield() -> Double {
+        return 10
+    }
+    
+    func inputTextFontForPhoneTextfield() -> Font {
+        return .body
+    }
+    
     func headingTextColorForUserIdTextfield() -> Color {
         return .black
     }
@@ -126,6 +163,35 @@ extension LoginViewExample: CustomLoginViewUIProtocol {
     
     func cornerRadiusForLoginButton() -> Double {
         return 8
+    }
+    
+    
+}
+
+// MARK: CustomLoginViewModelProtocol
+extension LoginViewExample: CustomLoginViewModelProtocol {
+    func didTapLoginButtonWith(userId: String, andPassword password: String) {
+        self.viewModel.errorMessage = "Something went wrong from email"
+    }
+    
+    func didTapSendOTPButton(withPhone phone: String) {
+        self.viewModel.errorMessage = "Something went wrong from phone"
+    }
+    
+    func loggedInSuccessFully() {
+        
+    }
+    
+    func didFailToLogin(withError errorMessage: String) {
+        
+    }
+    
+    func didTapForgotPasswordButton(withPhone phone: String) {
+        
+    }
+    
+    func didTapForgotPasswordButton(witEmail email: String) {
+        
     }
     
     

@@ -21,9 +21,10 @@ class Validation {
     
 
     static func isValid(password: String) -> Bool {
-        return password.range(
-            of: Validation.phonePattern,
-            options: .regularExpression
-        ) != nil
+        return password.count > 5
+//        return password.range(
+//            of: Validation.phonePattern,
+//            options: .regularExpression
+//        ) != nil
     }
 }

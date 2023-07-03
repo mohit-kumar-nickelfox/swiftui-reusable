@@ -7,7 +7,13 @@
 
 import SwiftUI
 
+// TODO: font and color for segmented ui
+
 struct CustomLoginView: View {
+    
+    let animationDuration: Double = 0.5
+    
+    @ObservedObject var viewModel: CustomLoginViewModel
     
     // Actions
     
@@ -56,6 +62,23 @@ struct CustomLoginView: View {
     
     @State var loginButtonDisabled: Bool = true
     
+    // Phone vars
+    
+    /// PhoneTextfiled title
+    var phoneTitle: String
+    
+    @State var phoneTitleColor: Color?
+    
+    @State var phoneTitleFont: Font?
+    
+    @State var phoneTextFieldBorderWidth: Double?
+    
+    @State var phoneTextFieldBorderColor: Color?
+    
+    @State var phoneTextFieldCornerRadius: Double?
+    
+    @State var phoneTextFont: Font?
+    
     // Forgot Password Vars
     
     @State var forgotPasswordButtonTitleColor: Color?
@@ -78,30 +101,121 @@ struct CustomLoginView: View {
     
     @Binding var userId: String
     @Binding var password: String
+    @Binding var phone: String
     @State var userIdErrorText: String = ""
     @State var passwordErrorText: String = ""
+    @State var phoneErrorText: String = ""
+    @State var showEmailView: Bool = true
+    @State var showPhoneView: Bool = false
     var delegate: CustomLoginViewUIProtocol?
     var body: some View {
         
         ZStack {
             VStack(alignment: .leading) {
                 
-                userIdView
+                // Segmented UI
+                SegmentedLoginView(selectedSegment: self.$viewModel.loginType,
+                                   color: .blue)
                 
-                HStack{}
-                    .frame(height: 20)
+                HStack{}.frame(height: 20)
                 
-                passwordView
+                if self.showEmailView {
+                    emailView
+                        .frame(width: UIScreen.main.bounds.width - 40)
+//                        .animation(.easeOut(duration: animationDuration), value: self.showEmailView)
+//                        .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)))
+//                        .zIndex(2)
+                } else {
+                    EmptyView()
+                }
                 
-                forgotPasswordButton
+                if self.showPhoneView {
+                    phoneView
+                        .frame(width: UIScreen.main.bounds.width - 40)
+//                        .animation(.easeOut(duration: animationDuration), value: self.showPhoneView)
+//                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .trailing)))
+//                            .zIndex(2)
+                }
                 
-                loginButton
+                Spacer()
                 
             }
+            .frame(height: 450)
             .padding()
+            
+            
+            if let errorMessage = self.viewModel.errorMessage,
+               !errorMessage.isEmpty {
+                VStack {
+                    Text(errorMessage)
+                }
+            }
+            
         }
         .onAppear {
             self.setupUI()
+        }
+        .onChange(of: self.viewModel.loginType) { newValue in
+//            withAnimation(Animation.easeInOut(duration: animationDuration)) {
+                self.showEmailView = newValue == .email
+                self.showPhoneView = newValue == .phone
+//            }
+        }
+    }
+    
+    
+    var phoneView: some View {
+        VStack {
+            phoneTextfieldView
+            
+            loginButton
+        }
+    }
+    
+    /// Phone  Textfield View
+    var phoneTextfieldView: some View {
+        VStack {
+            VStack(alignment: .leading) {
+                
+                Text(phoneTitle)
+                    .foregroundColor(self.phoneTitleColor ?? .black)
+                    .font(self.phoneTitleFont ?? .body)
+                CustomTextField(
+                    placeholder: "987654321",
+                    text: self.$phone,
+                    isSecureField: false,
+                    borderWidth: self.phoneTextFieldBorderWidth ?? 1,
+                    borderColor: self.phoneTextFieldBorderColor ?? .black,
+                    cornerRadius: self.phoneTextFieldCornerRadius ?? 8,
+                    keyboardType: .phonePad)
+                .font(self.phoneTextFont ?? .body)
+                .autocorrectionDisabled()
+                .onChange(of: self.phone) { newValue in
+                    self.phoneErrorText = Validation.isValidEmail(email: newValue)
+                    ? ""
+                    : "Invalid Email"
+                }
+                Text(self.userIdErrorText)
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .padding(.top, -5)
+                    .padding(.leading, 20)
+            }
+        }
+    }
+    
+    /// Email View
+    var emailView: some View {
+        VStack {
+            userIdView
+            
+            HStack{}.frame(height: 20)
+            
+            passwordView
+            
+            forgotPasswordButton
+            
+            loginButton
         }
     }
     
@@ -124,9 +238,11 @@ struct CustomLoginView: View {
             .font(self.userIdTextFont ?? .body)
             .autocorrectionDisabled()
             .onChange(of: self.userId) { newValue in
+                self.viewModel.userId = newValue
                 self.userIdErrorText = Validation.isValidEmail(email: newValue)
                 ? ""
                 : "Invalid Email"
+                self.enableLoginButton()
             }
             Text(self.userIdErrorText)
                 .foregroundColor(.red)
@@ -152,11 +268,12 @@ struct CustomLoginView: View {
                 borderColor: self.passwordTextFieldBorderColor ?? .black,
                 cornerRadius: self.passwordTextFieldCornerRadius ?? 8,
                 keyboardType: .default)
-            .onChange(of: self.userId) { newValue in
-                
+            .onChange(of: self.password) { newValue in
+                self.viewModel.password = newValue
                 self.passwordErrorText = Validation.isValid(password: newValue)
                 ? ""
                 : "Invalid Password"
+                self.enableLoginButton()
             }
             .autocorrectionDisabled()
             Text(self.passwordErrorText)
@@ -183,13 +300,13 @@ struct CustomLoginView: View {
                          ? .white
                          : .yellow,
                          cornerRadius: 8)
-            .frame(width: 108, height: 44)
+            .frame(width: UIScreen.main.bounds.size.width - 40, height: 44)
             .foregroundColor(.white)
             .font(.subheadline)
             .fontWeight(.heavy)
-            .transaction { transaction in
-                transaction.animation = .easeInOut(duration: 0.1)
-            }
+//            .transaction { transaction in
+//                transaction.animation = .easeInOut(duration: 0.1)
+//            }
             .disabled(self.loginButtonDisabled)
             
             Spacer()
@@ -213,18 +330,27 @@ struct CustomLoginView: View {
     func loginButtonAction() {
         print("Login Button tapped")
     }
+    
+    func enableLoginButton() {
+        self.loginButtonDisabled = !(Validation.isValidEmail(email: self.viewModel.userId ?? "") &&
+        Validation.isValid(password: self.viewModel.password ?? ""))
+        print(self.loginButtonDisabled)
+    }
 }
 
 struct CustomLoginView_Previews: PreviewProvider {
     static var previews: some View {
         CustomLoginView(
+            viewModel: CustomLoginViewModel(),
             loginAction: {},
             forgotPasswordAction: {},
             userIdTitle: "Email",
             userIdPlaceholder: "test@example.com",
             passwordTitle: "Password",
+            phoneTitle: "Phone",
             userId: .constant(""),
-            password: .constant(""))
+            password: .constant(""),
+            phone: .constant(""))
     }
 }
 
@@ -257,14 +383,5 @@ extension CustomLoginView {
         self.loginButtonBackgroundColor = delegate?.backgroundColorForLoginButton()
         self.loginButtonBorderWidth = delegate?.borderWidthForLoginButton()
         self.loginButtonCornerRadius = delegate?.cornerRadiusForLoginButton()
-    }
-}
-
-extension CustomLoginView {
-    
-    var phoneView: some View {
-        VStack {
-            
-        }
     }
 }
