@@ -21,10 +21,20 @@ class Validation {
     
 
     static func isValid(password: String) -> Bool {
-        return password.count > 5
+        return password.count >= 5
 //        return password.range(
 //            of: Validation.phonePattern,
 //            options: .regularExpression
 //        ) != nil
+    }
+}
+
+extension String {
+    var isValidPhone: Bool {
+        let character  = NSCharacterSet(charactersIn: "+0123456789").inverted
+        var filtered: String!
+        let inputString = self.components(separatedBy: character)
+        filtered = inputString.joined(separator: "")
+        return  self == filtered && self.count >= 10
     }
 }

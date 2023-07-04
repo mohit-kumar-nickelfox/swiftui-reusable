@@ -59,9 +59,10 @@ struct SegmentedView: View {
                                     .matchedGeometryEffect(id: "Tab", in: name)
                             }
                         }
-                    }
+                    }.padding(.top, 10)
                 }
             }
-        }
+        }.background(Color.black.opacity(0.15))
+            .cornerRadius(4)
     }
 }

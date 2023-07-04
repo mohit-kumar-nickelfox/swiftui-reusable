@@ -61,6 +61,7 @@ struct CustomLoginView: View {
     @State var passwordTextFont: Font?
     
     @State var loginButtonDisabled: Bool = true
+    @State var sendOTPButtonDisabled: Bool = true
     
     // Phone vars
     
@@ -122,9 +123,6 @@ struct CustomLoginView: View {
                 if self.showEmailView {
                     emailView
                         .frame(width: UIScreen.main.bounds.width - 40)
-//                        .animation(.easeOut(duration: animationDuration), value: self.showEmailView)
-//                        .transition(.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .leading)))
-//                        .zIndex(2)
                 } else {
                     EmptyView()
                 }
@@ -132,9 +130,6 @@ struct CustomLoginView: View {
                 if self.showPhoneView {
                     phoneView
                         .frame(width: UIScreen.main.bounds.width - 40)
-//                        .animation(.easeOut(duration: animationDuration), value: self.showPhoneView)
-//                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .trailing)))
-//                            .zIndex(2)
                 }
                 
                 Spacer()
@@ -143,12 +138,14 @@ struct CustomLoginView: View {
             .frame(height: 450)
             .padding()
             
-            
-            if let errorMessage = self.viewModel.errorMessage,
-               !errorMessage.isEmpty {
+            if self.viewModel.showLoader {
                 VStack {
-                    Text(errorMessage)
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding()
+                        .tint(Color.black)
                 }
+                .allowsHitTesting(true)
             }
             
         }
@@ -156,34 +153,36 @@ struct CustomLoginView: View {
             self.setupUI()
         }
         .onChange(of: self.viewModel.loginType) { newValue in
-//            withAnimation(Animation.easeInOut(duration: animationDuration)) {
-                self.showEmailView = newValue == .email
-                self.showPhoneView = newValue == .phone
-//            }
+            self.showEmailView = newValue == .email
+            self.showPhoneView = newValue == .phone
         }
+        .alert(isPresented: self.$viewModel.showErrorAlert) {
+            Alert(title: Text("Error!"), message: Text(self.viewModel.errorMessage ?? ""), dismissButton: .cancel(Text("Okay")))
+        }
+        .allowsHitTesting(!self.viewModel.showLoader)
     }
     
-    
+    // MARK: Phone  View
     var phoneView: some View {
         VStack {
             
             if self.viewModel.showPhoneField {
                 // Show Phone Number field and send otp button
                 phoneTextfieldView
-                loginButton
+                sendOTPButton
             } else {
                 // Show OTP View
                 PhoneOTPView(
                     phoneNumber: self.viewModel.phoneNumber ?? "",
                     otpFilled: self.otpFilled(_:),
-                    getOTPAgain: self.getOTP,
+                    getOTPAgain: self.viewModel.getOTP,
                     changePhoneNumber: self.changeNumber
                 )
             }
         }
     }
     
-    /// Phone  Textfield View
+    // MARK: Phone Textfield View
     var phoneTextfieldView: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -196,17 +195,25 @@ struct CustomLoginView: View {
                     text: self.$phone,
                     isSecureField: false,
                     borderWidth: self.phoneTextFieldBorderWidth ?? 1,
-                    borderColor: self.phoneTextFieldBorderColor ?? .black,
+                    borderColor: self.phoneErrorText.isEmpty
+                    ? self.phoneTextFieldBorderColor ?? .black
+                    : .red,
                     cornerRadius: self.phoneTextFieldCornerRadius ?? 8,
                     keyboardType: .phonePad)
                 .font(self.phoneTextFont ?? .body)
                 .autocorrectionDisabled()
                 .onChange(of: self.phone) { newValue in
-                    self.phoneErrorText = Validation.isValidEmail(email: newValue)
+                    self.viewModel.phoneNumber = newValue
+                    self.phoneErrorText = newValue.isValidPhone
                     ? ""
-                    : "Invalid Email"
+                    : "Invalid Phone number"
+                    self.sendOTPButtonDisabled = !newValue.isValidPhone
+                    
+                    print(newValue.isValidPhone)
+                    
+                    
                 }
-                Text(self.userIdErrorText)
+                Text(self.phoneErrorText)
                     .foregroundColor(.red)
                     .font(.caption)
                     .padding(.top, -5)
@@ -215,7 +222,7 @@ struct CustomLoginView: View {
         }
     }
     
-    /// Email View
+    // MARK: Email View
     var emailView: some View {
         VStack {
             userIdView
@@ -230,7 +237,7 @@ struct CustomLoginView: View {
         }
     }
     
-    /// UserIdTextField View
+    // MARK: UserIdTextField View
     var userIdView: some View {
         VStack(alignment: .leading) {
             
@@ -243,7 +250,9 @@ struct CustomLoginView: View {
                 text: self.$userId,
                 isSecureField: false,
                 borderWidth: self.userIdTextFieldBorderWidth ?? 1,
-                borderColor: self.userIdTextFieldBorderColor ?? .black,
+                borderColor: self.userIdErrorText.isEmpty
+                ? self.phoneTextFieldBorderColor ?? .black
+                : .red,
                 cornerRadius: self.userIdTextFieldCornerRadius ?? 8,
                 keyboardType: .emailAddress)
             .font(self.userIdTextFont ?? .body)
@@ -264,7 +273,7 @@ struct CustomLoginView: View {
         }
     }
     
-    /// Password TextField View
+    // MARK: Password TextField View
     var passwordView: some View {
         VStack(alignment: .leading) {
             
@@ -277,7 +286,9 @@ struct CustomLoginView: View {
                 text: self.$password,
                 isSecureField: true,
                 borderWidth: self.passwordTextFieldBorderWidth ?? 1,
-                borderColor: self.passwordTextFieldBorderColor ?? .black,
+                borderColor: self.passwordErrorText.isEmpty
+                ? self.phoneTextFieldBorderColor ?? .black
+                : .red,
                 cornerRadius: self.passwordTextFieldCornerRadius ?? 8,
                 keyboardType: .default)
             .onChange(of: self.password) { newValue in
@@ -296,13 +307,13 @@ struct CustomLoginView: View {
         }
     }
     
-    /// Login Button
+    // MARK: Login Button
     var loginButton: some View {
         
         HStack {
             
             Spacer()
-            CustomButton(action: loginAction,
+            CustomButton(action: self.viewModel.loginWithEmail,
                          buttonTitle: "Login",
                          backgroundColor: loginButtonDisabled
                          ? .gray
@@ -316,9 +327,6 @@ struct CustomLoginView: View {
             .foregroundColor(.white)
             .font(.subheadline)
             .fontWeight(.heavy)
-//            .transaction { transaction in
-//                transaction.animation = .easeInOut(duration: 0.1)
-//            }
             .disabled(self.loginButtonDisabled)
             
             Spacer()
@@ -326,7 +334,7 @@ struct CustomLoginView: View {
         .padding(.top, 40)
     }
     
-    /// Forgot Password Button
+    // MARK: Forgot Password Button
     var forgotPasswordButton: some View {
         HStack {
             
@@ -339,8 +347,38 @@ struct CustomLoginView: View {
         }
     }
     
+    // MARK: Send OTP Button
+    var sendOTPButton: some View {
+        HStack {
+            
+            Spacer()
+            CustomButton(action: self.viewModel.getOTP,
+                         buttonTitle: "Send OTP",
+                         backgroundColor: sendOTPButtonDisabled
+                         ? .gray
+                         : .mint,
+                         borderWidth: 2,
+                         borderColor: sendOTPButtonDisabled
+                         ? .white
+                         : .yellow,
+                         cornerRadius: 8)
+            .frame(width: UIScreen.main.bounds.size.width - 40, height: 44)
+            .foregroundColor(.white)
+            .font(.subheadline)
+            .fontWeight(.heavy)
+            .disabled(self.sendOTPButtonDisabled)
+            
+            Spacer()
+        }
+        .padding(.top, 40)
+    }
+}
+
+// MARK: Helper Functions
+extension CustomLoginView {
+    
     func loginButtonAction() {
-        print("Login Button tapped")
+        self.viewModel.loginWithEmail()
     }
     
     func enableLoginButton() {
@@ -350,15 +388,11 @@ struct CustomLoginView: View {
     }
     
     func otpFilled(_ otp: String) {
-        print("OTP filled, Make api request")
+        self.viewModel.verify(otp: otp)
     }
     
     func changeNumber() {
         self.viewModel.showPhoneField = true
-    }
-    
-    func getOTP() {
-        
     }
 }
 

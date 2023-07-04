@@ -155,4 +155,6 @@ protocol CustomLoginViewModelProtocol {
     func didTapForgotPasswordButton(withPhone phone: String)
     
     func didTapForgotPasswordButton(witEmail email: String)
+    
+    func didTapVerify(otp: String)
 }

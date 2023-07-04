@@ -62,7 +62,7 @@ struct PhoneOTPView: View {
                 .border(.black)
                 .keyboardType(.numberPad)
                 .onChange(of: self.otpText) { newValue in
-                    
+                    self.verifyButtonDisabled = true
                     switch newValue.count {
                     case 0:
                         self.activeIndex = newValue.count
@@ -71,6 +71,7 @@ struct PhoneOTPView: View {
                         self.activeIndex = newValue.count-1
                         self.setOTP()
                     case self.otpCount:
+                        self.verifyButtonDisabled = false
                         fieldFocused = false
                         self.activeIndex = -1
                         self.setOTP()
@@ -81,9 +82,20 @@ struct PhoneOTPView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .keyboard) {
-                        Button("Done") {
-                            fieldFocused = false
-                        }
+                        HStack {
+                            Button("Cancel") {
+                                fieldFocused = false
+                            }.frame(width: 60)
+                                .padding(.leading, 10)
+                            
+                            
+                            Spacer()
+                            Button("Done") {
+                                fieldFocused = false
+                                self.activeIndex = -1
+                            }.frame(width: 60)
+                                .padding(.trailing, 10)
+                        }.frame(width: UIScreen.main.bounds.size.width)
                     }
                 }
                 .opacity(0.001)
@@ -124,8 +136,13 @@ struct PhoneOTPView: View {
             backgroundColor: verifyButtonDisabled ? .black.opacity(0.2) : .teal,
             cornerRadius: 17)
         .disabled(self.verifyButtonDisabled)
+        .foregroundColor(.black)
         
     }
+}
+
+// MARK: Helper Functions
+extension PhoneOTPView {
     
     func sendOTP() {
         self.otpFilled(otpText)
@@ -159,8 +176,10 @@ struct PhoneOTPView: View {
         
         self.otp = newArray
     }
+    
 }
 
+// MARK: Preview
 struct PhoneOTPView_Previews: PreviewProvider {
     static var previews: some View {
         PhoneOTPView(

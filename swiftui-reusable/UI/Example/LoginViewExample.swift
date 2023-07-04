@@ -40,7 +40,7 @@ struct LoginViewExample: View {
     
     func loginAction() {
         print("Login Tapped")
-        self.viewModel.errorMessage = "Something went wrong from email"
+//        self.viewModel.errorMessage = "Something went wrong from email"
         
     }
     
@@ -171,11 +171,18 @@ extension LoginViewExample: CustomLoginViewUIProtocol {
 // MARK: CustomLoginViewModelProtocol
 extension LoginViewExample: CustomLoginViewModelProtocol {
     func didTapLoginButtonWith(userId: String, andPassword password: String) {
-        self.viewModel.errorMessage = "Something went wrong from email"
+        // Will need to call api and share reponse directly to viewModel using this function
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if userId == "mohit.kumar@nickelfox.com" && password == "12345" {
+                self.viewModel.didGetEmailLoginResponse(withSuccess: true, errorMessage: nil)
+            } else {
+                self.viewModel.didGetEmailLoginResponse(withSuccess: false, errorMessage: "Incorrect Email or Password")
+            }
+        }
     }
     
     func didTapSendOTPButton(withPhone phone: String) {
-        self.viewModel.errorMessage = "Something went wrong from phone"
+//        Send OTP to device
     }
     
     func loggedInSuccessFully() {
@@ -194,5 +201,14 @@ extension LoginViewExample: CustomLoginViewModelProtocol {
         
     }
     
-    
+    func didTapVerify(otp: String) {
+        // Will need to call api and share reponse directly to viewModel using this function
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if otp == "000000" {
+                self.viewModel.didGetOTPLoginResponse(withSuccess: true, errorMessage: nil)
+            } else {
+                self.viewModel.didGetOTPLoginResponse(withSuccess: false, errorMessage: "Incorrect OTP")
+            }
+        }
+    }
 }
