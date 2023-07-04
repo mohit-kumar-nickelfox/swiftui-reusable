@@ -19,6 +19,9 @@ class CustomLoginViewModel: ObservableObject {
     
     @Published var errorMessage: String?
     
+    // Handle Phone View
+    @Published var showPhoneField: Bool = false
+    
     init() {
         
     }

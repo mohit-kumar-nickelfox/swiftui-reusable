@@ -166,9 +166,20 @@ struct CustomLoginView: View {
     
     var phoneView: some View {
         VStack {
-            phoneTextfieldView
             
-            loginButton
+            if self.viewModel.showPhoneField {
+                // Show Phone Number field and send otp button
+                phoneTextfieldView
+                loginButton
+            } else {
+                // Show OTP View
+                PhoneOTPView(
+                    phoneNumber: self.viewModel.phoneNumber ?? "",
+                    otpFilled: self.otpFilled(_:),
+                    getOTPAgain: self.getOTP,
+                    changePhoneNumber: self.changeNumber
+                )
+            }
         }
     }
     
@@ -237,6 +248,7 @@ struct CustomLoginView: View {
                 keyboardType: .emailAddress)
             .font(self.userIdTextFont ?? .body)
             .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
             .onChange(of: self.userId) { newValue in
                 self.viewModel.userId = newValue
                 self.userIdErrorText = Validation.isValidEmail(email: newValue)
@@ -336,24 +348,21 @@ struct CustomLoginView: View {
         Validation.isValid(password: self.viewModel.password ?? ""))
         print(self.loginButtonDisabled)
     }
-}
-
-struct CustomLoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomLoginView(
-            viewModel: CustomLoginViewModel(),
-            loginAction: {},
-            forgotPasswordAction: {},
-            userIdTitle: "Email",
-            userIdPlaceholder: "test@example.com",
-            passwordTitle: "Password",
-            phoneTitle: "Phone",
-            userId: .constant(""),
-            password: .constant(""),
-            phone: .constant(""))
+    
+    func otpFilled(_ otp: String) {
+        print("OTP filled, Make api request")
+    }
+    
+    func changeNumber() {
+        self.viewModel.showPhoneField = true
+    }
+    
+    func getOTP() {
+        
     }
 }
 
+// MARK: UI Setup
 extension CustomLoginView {
     func setupUI() {
         // UserId
@@ -383,5 +392,22 @@ extension CustomLoginView {
         self.loginButtonBackgroundColor = delegate?.backgroundColorForLoginButton()
         self.loginButtonBorderWidth = delegate?.borderWidthForLoginButton()
         self.loginButtonCornerRadius = delegate?.cornerRadiusForLoginButton()
+    }
+}
+
+// MARK: Preview
+struct CustomLoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        CustomLoginView(
+            viewModel: CustomLoginViewModel(),
+            loginAction: {},
+            forgotPasswordAction: {},
+            userIdTitle: "Email",
+            userIdPlaceholder: "test@example.com",
+            passwordTitle: "Password",
+            phoneTitle: "Phone",
+            userId: .constant(""),
+            password: .constant(""),
+            phone: .constant(""))
     }
 }

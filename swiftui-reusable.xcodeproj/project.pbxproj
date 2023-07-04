@@ -12,6 +12,7 @@
 		E60744582A52AD8F00FBE7A2 /* LoginViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744572A52AD8F00FBE7A2 /* LoginViewExample.swift */; };
 		E607445F2A52D0F700FBE7A2 /* SegmentedLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607445E2A52D0F700FBE7A2 /* SegmentedLoginView.swift */; };
 		E60744612A52D6FA00FBE7A2 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744602A52D6FA00FBE7A2 /* LoginType.swift */; };
+		E60744632A53E5E500FBE7A2 /* PhoneOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744622A53E5E500FBE7A2 /* PhoneOTPView.swift */; };
 		E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */; };
 		E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3C2A4D523900EA0031 /* ContentView.swift */; };
 		E6E5CB3F2A4D523A00EA0031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5CB3E2A4D523A00EA0031 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		E60744572A52AD8F00FBE7A2 /* LoginViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewExample.swift; sourceTree = "<group>"; };
 		E607445E2A52D0F700FBE7A2 /* SegmentedLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedLoginView.swift; sourceTree = "<group>"; };
 		E60744602A52D6FA00FBE7A2 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
+		E60744622A53E5E500FBE7A2 /* PhoneOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOTPView.swift; sourceTree = "<group>"; };
 		E6E5CB372A4D523900EA0031 /* swiftui-reusable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-reusable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_reusableApp.swift; sourceTree = "<group>"; };
 		E6E5CB3C2A4D523900EA0031 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				E6E5CB692A4D5F8F00EA0031 /* CustomLoginView.swift */,
 				E607445E2A52D0F700FBE7A2 /* SegmentedLoginView.swift */,
+				E60744622A53E5E500FBE7A2 /* PhoneOTPView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				E60744502A52A19600FBE7A2 /* CustomLoginViewModel.swift in Sources */,
 				E60744532A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift in Sources */,
 				E6E5CB6A2A4D5F8F00EA0031 /* CustomLoginView.swift in Sources */,
+				E60744632A53E5E500FBE7A2 /* PhoneOTPView.swift in Sources */,
 				E6E5CB6C2A4D61AD00EA0031 /* CustomButton.swift in Sources */,
 				E60744582A52AD8F00FBE7A2 /* LoginViewExample.swift in Sources */,
 			);
