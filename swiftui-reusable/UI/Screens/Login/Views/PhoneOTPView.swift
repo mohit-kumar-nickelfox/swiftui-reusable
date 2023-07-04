@@ -38,6 +38,10 @@ struct PhoneOTPView: View {
             
             verifyButton
         }
+        .onAppear {
+            self.fieldFocused = true
+            self.activeIndex = self.otpText.count
+        }
     }
     
     var numberView: some View {
@@ -99,6 +103,7 @@ struct PhoneOTPView: View {
                     }
                 }
                 .opacity(0.001)
+                .textContentType(.oneTimeCode)
             HStack {
                 ForEach(0..<otpCount, id: \.self) { index in
                     Button {

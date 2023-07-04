@@ -108,6 +108,9 @@ struct CustomLoginView: View {
     @State var phoneErrorText: String = ""
     @State var showEmailView: Bool = true
     @State var showPhoneView: Bool = false
+    
+    // Field Focused
+    @FocusState private var phoneNumberFieldFocused
     var delegate: CustomLoginViewUIProtocol?
     var body: some View {
         
@@ -200,6 +203,7 @@ struct CustomLoginView: View {
                     : .red,
                     cornerRadius: self.phoneTextFieldCornerRadius ?? 8,
                     keyboardType: .phonePad)
+                .focused(self.$phoneNumberFieldFocused)
                 .font(self.phoneTextFont ?? .body)
                 .autocorrectionDisabled()
                 .onChange(of: self.phone) { newValue in
@@ -212,6 +216,23 @@ struct CustomLoginView: View {
                     print(newValue.isValidPhone)
                     
                     
+                }
+                .toolbar {
+                    ToolbarItem(placement: .keyboard) {
+                        HStack {
+                            Button("Cancel") {
+                                phoneNumberFieldFocused = false
+                            }.frame(width: 60)
+                                .padding(.leading, 10)
+                            
+                            
+                            Spacer()
+                            Button("Done") {
+                                phoneNumberFieldFocused = false
+                            }.frame(width: 60)
+                                .padding(.trailing, 10)
+                        }.frame(width: UIScreen.main.bounds.size.width)
+                    }
                 }
                 Text(self.phoneErrorText)
                     .foregroundColor(.red)

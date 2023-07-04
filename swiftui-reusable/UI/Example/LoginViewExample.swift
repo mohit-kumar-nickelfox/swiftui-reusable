@@ -15,7 +15,12 @@ struct LoginViewExample: View {
     
     var viewModel = CustomLoginViewModel()
     var body: some View {
-        loginView()
+        ScrollView {
+            VStack {
+                loginView()
+            }
+        }
+        
     }
     
     func loginView() -> some View {
