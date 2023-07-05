@@ -9,29 +9,29 @@ import SwiftUI
 
 /// Custom Button
 /// You can provide title font and color by providing font and foregroundColor moidifier on Custom Button
-struct CustomButton: View {
+public struct CustomButton: View {
     
     /// Button action callback
-    var action: (() -> Void)
+    public var action: (() -> Void)
     
     /// Button title
-    var buttonTitle: String
+    public var buttonTitle: String
     
-    var frame: CGRect?
+    public var frame: CGRect?
     
     /// Button Background Color
-    var backgroundColor: Color?
+    public var backgroundColor: Color?
     
     /// Button Border Width
-    var borderWidth: Double?
+    public var borderWidth: Double?
     
     /// Button Border Color
-    var borderColor: Color?
+    public var borderColor: Color?
     
     /// Corner Radius
-    var cornerRadius: Double?
+    public var cornerRadius: Double?
     
-    var body: some View {
+    public var body: some View {
         Button {
             action()
         } label: {

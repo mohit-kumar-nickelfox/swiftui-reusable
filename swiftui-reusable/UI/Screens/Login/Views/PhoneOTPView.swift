@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct PhoneOTPView: View {
-    var phoneNumber: String
-    var otpFilled: (_ otp: String)->Void
-    var getOTPAgain: ()->Void
-    var changePhoneNumber: ()->Void
+public struct PhoneOTPView: View {
+    public var phoneNumber: String
+    public var otpFilled: (_ otp: String)->Void
+    public var getOTPAgain: ()->Void
+    public var changePhoneNumber: ()->Void
     
     var cornerRadius: Double?// = 4
     var borderWidth: Double?// = 2
@@ -26,7 +26,7 @@ struct PhoneOTPView: View {
     @State var activeIndex: Int = -1
     @State var verifyButtonDisabled: Bool = true
     @State var showLoader: Bool = false
-    var body: some View {
+    public var body: some View {
         
         VStack {
             

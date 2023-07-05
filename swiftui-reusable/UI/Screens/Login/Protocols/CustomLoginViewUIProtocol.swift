@@ -8,7 +8,7 @@
 import SwiftUI
 
 // MARK: CustomLoginViewUIProtocol
-protocol CustomLoginViewUIProtocol {
+public protocol CustomLoginViewUIProtocol {
     
     //--------------------------------------------------------------------------------------
     // UserID Textfield
@@ -143,7 +143,7 @@ protocol CustomLoginViewUIProtocol {
 }
 
 // MARK: CustomLoginViewModelProtocol
-protocol CustomLoginViewModelProtocol {
+public protocol CustomLoginViewModelProtocol {
     func didTapLoginButtonWith(userId: String, andPassword password: String)
     
     func didTapSendOTPButton(withPhone phone: String)

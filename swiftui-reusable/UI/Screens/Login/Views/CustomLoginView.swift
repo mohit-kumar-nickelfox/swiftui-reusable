@@ -9,7 +9,7 @@ import SwiftUI
 
 // TODO: font and color for segmented ui
 
-struct CustomLoginView: View {
+public struct CustomLoginView: View {
     
     let animationDuration: Double = 0.5
     
@@ -17,16 +17,16 @@ struct CustomLoginView: View {
     
     // Actions
     
-    var loginAction: ()->Void
+    public var loginAction: ()->Void
     
-    var forgotPasswordAction: (()->Void)
+    public var forgotPasswordAction: (()->Void)
     
-    var signupAction: (()->Void)?
+    public var signupAction: (()->Void)?
     
     // UserId vars
     
     /// User Id Textfiled title
-    var userIdTitle: String
+    public var userIdTitle: String
     
     @State var userIdTitleColor: Color?
     
@@ -41,12 +41,12 @@ struct CustomLoginView: View {
     @State var userIdTextFont: Font?
     
     /// User Id Textfiled placeholder
-    var userIdPlaceholder: String
+    public var userIdPlaceholder: String
     
     // Password vars
     
     /// Password Textfiled title
-    var passwordTitle: String
+    public var passwordTitle: String
     
     @State var passwordTitleColor: Color?
     
@@ -66,7 +66,7 @@ struct CustomLoginView: View {
     // Phone vars
     
     /// PhoneTextfiled title
-    var phoneTitle: String
+    public var phoneTitle: String
     
     @State var phoneTitleColor: Color?
     
@@ -111,8 +111,8 @@ struct CustomLoginView: View {
     
     // Field Focused
     @FocusState private var phoneNumberFieldFocused
-    var delegate: CustomLoginViewUIProtocol?
-    var body: some View {
+    public var delegate: CustomLoginViewUIProtocol?
+    public var body: some View {
         
         ZStack {
             VStack(alignment: .leading) {
@@ -234,6 +234,7 @@ struct CustomLoginView: View {
                         }.frame(width: UIScreen.main.bounds.size.width)
                     }
                 }
+                .textContentType(.telephoneNumber)
                 Text(self.phoneErrorText)
                     .foregroundColor(.red)
                     .font(.caption)
@@ -276,6 +277,7 @@ struct CustomLoginView: View {
                 : .red,
                 cornerRadius: self.userIdTextFieldCornerRadius ?? 8,
                 keyboardType: .emailAddress)
+//            .textContentType(.emailAddress)
             .font(self.userIdTextFont ?? .body)
             .autocorrectionDisabled()
             .textInputAutocapitalization(.never)
@@ -286,6 +288,7 @@ struct CustomLoginView: View {
                 : "Invalid Email"
                 self.enableLoginButton()
             }
+            
             Text(self.userIdErrorText)
                 .foregroundColor(.red)
                 .font(.caption)
@@ -312,6 +315,7 @@ struct CustomLoginView: View {
                 : .red,
                 cornerRadius: self.passwordTextFieldCornerRadius ?? 8,
                 keyboardType: .default)
+//            .textContentType(<#T##UIKit.UITextContentType?#>)
             .onChange(of: self.password) { newValue in
                 self.viewModel.password = newValue
                 self.passwordErrorText = Validation.isValid(password: newValue)
@@ -319,6 +323,7 @@ struct CustomLoginView: View {
                 : "Invalid Password"
                 self.enableLoginButton()
             }
+            
             .autocorrectionDisabled()
             Text(self.passwordErrorText)
                 .foregroundColor(.red)
