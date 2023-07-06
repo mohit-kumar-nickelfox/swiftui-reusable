@@ -10,6 +10,9 @@ import SwiftUI
 /// Custom textfield
 /// You can set text font and color by providing font and foreground modifiers to CustomTextField
 public struct CustomTextField: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     var placeholder: String
     @Binding var text: String
     
@@ -40,7 +43,7 @@ public struct CustomTextField: View {
                     cornerRadius: cornerRadius ?? 0
                 )
                 .stroke(
-                    borderColor ?? .black,
+                    borderColor ?? (self.colorScheme == .light ? .black : .white),
                     lineWidth: borderWidth ?? 0
                 )
             )

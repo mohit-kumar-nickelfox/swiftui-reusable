@@ -70,14 +70,6 @@ extension LoginViewExample: CustomLoginViewUIProtocol {
         return .black
     }
     
-    func headingTextFontForPhoneTextfield() -> Font {
-        return .subheadline
-    }
-    
-    func borderWidthForPhoneTextfield() -> Double {
-        return 1
-    }
-    
     func borderColorForPhoneTextfield() -> Color {
         return .black
     }
@@ -86,56 +78,16 @@ extension LoginViewExample: CustomLoginViewUIProtocol {
         return 10
     }
     
-    func inputTextFontForPhoneTextfield() -> Font {
-        return .body
-    }
-    
-    func headingTextColorForUserIdTextfield() -> Color {
-        return .black
-    }
-    
-    func headingTextFontForUserIdTextfield() -> Font {
-        return .subheadline
-    }
-    
-    func borderWidthForUserIdTextfield() -> Double {
-        return 1
-    }
-    
     func borderColorForUserIdTextfield() -> Color {
         return .black
-    }
-    
-    func cornerRadiusForUserIdTextfield() -> Double {
-        return 10
-    }
-    
-    func inputTextFontForUserIdTextfield() -> Font {
-        return .body
     }
     
     func headingTextColorForPasswordTextfield() -> Color {
         return .black
     }
     
-    func headingFontForPasswordTextfield() -> Font {
-        return .subheadline
-    }
-    
-    func borderWidthForPasswordTextfield() -> Double {
-        return 1
-    }
-    
     func borderColorForPasswordTextfield() -> Color {
         return .black
-    }
-    
-    func cornerRadiusForPasswordTextfield() -> Double {
-        return 10
-    }
-    
-    func inputTextFontForPasswordTextfield() -> Font {
-        return .body
     }
     
     func titleColorForForgotPasswordButton() -> Color {
@@ -148,10 +100,6 @@ extension LoginViewExample: CustomLoginViewUIProtocol {
     
     func titleColorForLoginButton() -> Color {
         return .black
-    }
-    
-    func titleFontForLoginButton() -> Font {
-        return .subheadline
     }
     
     func backgroundColorForLoginButton() -> Color {

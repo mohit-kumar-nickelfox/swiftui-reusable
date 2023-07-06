@@ -110,37 +110,20 @@ public struct CustomLoginView: View {
     @State var showPhoneView: Bool = false
     
     // Field Focused
-    @FocusState private var phoneNumberFieldFocused
+    @FocusState var phoneNumberFieldFocused
     public var delegate: CustomLoginViewUIProtocol?
     public var body: some View {
         
         ZStack {
-            VStack(alignment: .leading) {
-                
-                // Segmented UI
-                SegmentedLoginView(selectedSegment: self.$viewModel.loginType,
-                                   color: .blue)
-                
-                HStack{}.frame(height: 20)
-                
-                if self.showEmailView {
-                    emailView
-                        .frame(width: UIScreen.main.bounds.width - 40)
-                } else {
-                    EmptyView()
-                }
-                
-                if self.showPhoneView {
-                    phoneView
-                        .frame(width: UIScreen.main.bounds.width - 40)
-                }
-                
-                Spacer()
-                
-            }
-            .frame(height: 450)
-            .padding()
             
+            if self.viewModel.showSignupView {
+                signupView
+            } else {
+                loginView
+            }
+            
+            
+                        
             if self.viewModel.showLoader {
                 VStack {
                     ProgressView()
@@ -165,239 +148,7 @@ public struct CustomLoginView: View {
         .allowsHitTesting(!self.viewModel.showLoader)
     }
     
-    // MARK: Phone  View
-    var phoneView: some View {
-        VStack {
-            
-            if self.viewModel.showPhoneField {
-                // Show Phone Number field and send otp button
-                phoneTextfieldView
-                sendOTPButton
-            } else {
-                // Show OTP View
-                PhoneOTPView(
-                    phoneNumber: self.viewModel.phoneNumber ?? "",
-                    otpFilled: self.otpFilled(_:),
-                    getOTPAgain: self.viewModel.getOTP,
-                    changePhoneNumber: self.changeNumber
-                )
-            }
-        }
-    }
     
-    // MARK: Phone Textfield View
-    var phoneTextfieldView: some View {
-        VStack {
-            VStack(alignment: .leading) {
-                
-                Text(phoneTitle)
-                    .foregroundColor(self.phoneTitleColor ?? .black)
-                    .font(self.phoneTitleFont ?? .body)
-                CustomTextField(
-                    placeholder: "987654321",
-                    text: self.$phone,
-                    isSecureField: false,
-                    borderWidth: self.phoneTextFieldBorderWidth ?? 1,
-                    borderColor: self.phoneErrorText.isEmpty
-                    ? self.phoneTextFieldBorderColor ?? .black
-                    : .red,
-                    cornerRadius: self.phoneTextFieldCornerRadius ?? 8,
-                    keyboardType: .phonePad)
-                .focused(self.$phoneNumberFieldFocused)
-                .font(self.phoneTextFont ?? .body)
-                .autocorrectionDisabled()
-                .onChange(of: self.phone) { newValue in
-                    self.viewModel.phoneNumber = newValue
-                    self.phoneErrorText = newValue.isValidPhone
-                    ? ""
-                    : "Invalid Phone number"
-                    self.sendOTPButtonDisabled = !newValue.isValidPhone
-                    
-                    print(newValue.isValidPhone)
-                    
-                    
-                }
-                .toolbar {
-                    ToolbarItem(placement: .keyboard) {
-                        HStack {
-                            Button("Cancel") {
-                                phoneNumberFieldFocused = false
-                            }.frame(width: 60)
-                                .padding(.leading, 10)
-                            
-                            
-                            Spacer()
-                            Button("Done") {
-                                phoneNumberFieldFocused = false
-                            }.frame(width: 60)
-                                .padding(.trailing, 10)
-                        }.frame(width: UIScreen.main.bounds.size.width)
-                    }
-                }
-                .textContentType(.telephoneNumber)
-                Text(self.phoneErrorText)
-                    .foregroundColor(.red)
-                    .font(.caption)
-                    .padding(.top, -5)
-                    .padding(.leading, 20)
-            }
-        }
-    }
-    
-    // MARK: Email View
-    var emailView: some View {
-        VStack {
-            userIdView
-            
-            HStack{}.frame(height: 20)
-            
-            passwordView
-            
-            forgotPasswordButton
-            
-            loginButton
-        }
-    }
-    
-    // MARK: UserIdTextField View
-    var userIdView: some View {
-        VStack(alignment: .leading) {
-            
-            Text(userIdTitle)
-                .foregroundColor(self.userIdTitleColor ?? .black)
-                .font(self.userIdTitleFont ?? .body)
-//                    .fontWeight(self.userIdTitleFontWeight ?? .medium)
-            CustomTextField(
-                placeholder: "test@example.com",
-                text: self.$userId,
-                isSecureField: false,
-                borderWidth: self.userIdTextFieldBorderWidth ?? 1,
-                borderColor: self.userIdErrorText.isEmpty
-                ? self.phoneTextFieldBorderColor ?? .black
-                : .red,
-                cornerRadius: self.userIdTextFieldCornerRadius ?? 8,
-                keyboardType: .emailAddress)
-//            .textContentType(.emailAddress)
-            .font(self.userIdTextFont ?? .body)
-            .autocorrectionDisabled()
-            .textInputAutocapitalization(.never)
-            .onChange(of: self.userId) { newValue in
-                self.viewModel.userId = newValue
-                self.userIdErrorText = Validation.isValidEmail(email: newValue)
-                ? ""
-                : "Invalid Email"
-                self.enableLoginButton()
-            }
-            
-            Text(self.userIdErrorText)
-                .foregroundColor(.red)
-                .font(.caption)
-                .padding(.top, -5)
-                .padding(.leading, 20)
-        }
-    }
-    
-    // MARK: Password TextField View
-    var passwordView: some View {
-        VStack(alignment: .leading) {
-            
-            Text(passwordTitle)
-                .foregroundColor(self.passwordTitleColor ?? .black)
-                .font(self.passwordTitleFont ?? .body)
-//                    .fontWeight(self.passwordTextFontWeight ?? .medium)
-            CustomTextField(
-                placeholder: "************",
-                text: self.$password,
-                isSecureField: true,
-                borderWidth: self.passwordTextFieldBorderWidth ?? 1,
-                borderColor: self.passwordErrorText.isEmpty
-                ? self.phoneTextFieldBorderColor ?? .black
-                : .red,
-                cornerRadius: self.passwordTextFieldCornerRadius ?? 8,
-                keyboardType: .default)
-//            .textContentType(<#T##UIKit.UITextContentType?#>)
-            .onChange(of: self.password) { newValue in
-                self.viewModel.password = newValue
-                self.passwordErrorText = Validation.isValid(password: newValue)
-                ? ""
-                : "Invalid Password"
-                self.enableLoginButton()
-            }
-            
-            .autocorrectionDisabled()
-            Text(self.passwordErrorText)
-                .foregroundColor(.red)
-                .font(.caption)
-                .padding(.top, -5)
-                .padding(.leading, 20)
-        }
-    }
-    
-    // MARK: Login Button
-    var loginButton: some View {
-        
-        HStack {
-            
-            Spacer()
-            CustomButton(action: self.viewModel.loginWithEmail,
-                         buttonTitle: "Login",
-                         backgroundColor: loginButtonDisabled
-                         ? .gray
-                         : .mint,
-                         borderWidth: 2,
-                         borderColor: loginButtonDisabled
-                         ? .white
-                         : .yellow,
-                         cornerRadius: 8)
-            .frame(width: UIScreen.main.bounds.size.width - 40, height: 44)
-            .foregroundColor(.white)
-            .font(.subheadline)
-            .fontWeight(.heavy)
-            .disabled(self.loginButtonDisabled)
-            
-            Spacer()
-        }
-        .padding(.top, 40)
-    }
-    
-    // MARK: Forgot Password Button
-    var forgotPasswordButton: some View {
-        HStack {
-            
-            Spacer()
-            CustomButton(
-                action: forgotPasswordAction,
-                buttonTitle: "ForgotPassword?")
-            .foregroundColor(self.forgotPasswordButtonTitleColor ?? .black)
-            .font(self.forgotPasswordButtonTitleFont ?? .caption)
-        }
-    }
-    
-    // MARK: Send OTP Button
-    var sendOTPButton: some View {
-        HStack {
-            
-            Spacer()
-            CustomButton(action: self.viewModel.getOTP,
-                         buttonTitle: "Send OTP",
-                         backgroundColor: sendOTPButtonDisabled
-                         ? .gray
-                         : .mint,
-                         borderWidth: 2,
-                         borderColor: sendOTPButtonDisabled
-                         ? .white
-                         : .yellow,
-                         cornerRadius: 8)
-            .frame(width: UIScreen.main.bounds.size.width - 40, height: 44)
-            .foregroundColor(.white)
-            .font(.subheadline)
-            .fontWeight(.heavy)
-            .disabled(self.sendOTPButtonDisabled)
-            
-            Spacer()
-        }
-        .padding(.top, 40)
-    }
 }
 
 // MARK: Helper Functions

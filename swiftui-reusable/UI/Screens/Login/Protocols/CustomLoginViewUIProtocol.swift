@@ -15,15 +15,15 @@ public protocol CustomLoginViewUIProtocol {
     
     /// Color for UserId Heading
     /// - Returns: SwiftUI Color
-    func headingTextColorForUserIdTextfield() -> Color
+    func headingTextColorForUserIdTextfield() -> Color // Optional
     
     /// Font for UserId Heading
     /// - Returns: SwiftUI Font
-    func headingTextFontForUserIdTextfield() -> Font
+    func headingTextFontForUserIdTextfield() -> Font // Optional
     
     /// Border Width for UserId Textfield
     /// - Returns: Border Width
-    func borderWidthForUserIdTextfield() -> Double
+    func borderWidthForUserIdTextfield() -> Double // Optional
     
     /// Border Color for UserId Textfield
     /// - Returns: Border Color
@@ -31,11 +31,11 @@ public protocol CustomLoginViewUIProtocol {
     
     /// Corner Radius for UserId Textfield
     /// - Returns: Corner Radius
-    func cornerRadiusForUserIdTextfield() -> Double
+    func cornerRadiusForUserIdTextfield() -> Double // Optional
     
     /// Input Text Font for UserId Textfield
     /// - Returns: Font
-    func inputTextFontForUserIdTextfield() -> Font
+    func inputTextFontForUserIdTextfield() -> Font // Optional
     
 //    /// Input Text Font Weight for UserId Textfield
 //    /// - Returns: Font Weight
@@ -51,11 +51,11 @@ public protocol CustomLoginViewUIProtocol {
     
     /// Font for Password Heading
     /// - Returns: SwiftUI Font
-    func headingFontForPasswordTextfield() -> Font
+    func headingFontForPasswordTextfield() -> Font // Optional
     
     /// Border Width for Password Textfield
     /// - Returns: Border Width
-    func borderWidthForPasswordTextfield() -> Double
+    func borderWidthForPasswordTextfield() -> Double // Optional
     
     /// Border Color for Password Textfield
     /// - Returns: Border Color
@@ -63,11 +63,11 @@ public protocol CustomLoginViewUIProtocol {
     
     /// Corner Radius for Password Textfield
     /// - Returns: Corner Radius
-    func cornerRadiusForPasswordTextfield() -> Double
+    func cornerRadiusForPasswordTextfield() -> Double // Optional
     
     /// Input Text Font for Password Textfield
     /// - Returns: Font
-    func inputTextFontForPasswordTextfield() -> Font
+    func inputTextFontForPasswordTextfield() -> Font // Optional
     
 //    /// Input Text Font Weight for Password Textfield
 //    /// - Returns: Font Weight
@@ -76,29 +76,29 @@ public protocol CustomLoginViewUIProtocol {
     //--------------------------------------------------------------------------------------
     // Phone Textfield
     
-    /// Color for UserId Heading
+    /// Color for Phone Textfield Heading
     /// - Returns: SwiftUI Color
     func headingTextColorForPhoneTextfield() -> Color
     
-    /// Font for UserId Heading
+    /// Font for Phone Textfield Heading
     /// - Returns: SwiftUI Font
-    func headingTextFontForPhoneTextfield() -> Font
+    func headingTextFontForPhoneTextfield() -> Font // Optional
     
-    /// Border Width for UserId Textfield
+    /// Border Width for Phone Textfield
     /// - Returns: Border Width
-    func borderWidthForPhoneTextfield() -> Double
+    func borderWidthForPhoneTextfield() -> Double // Optional
     
-    /// Border Color for UserId Textfield
+    /// Border Color for Phone Textfield
     /// - Returns: Border Color
     func borderColorForPhoneTextfield() -> Color
     
-    /// Corner Radius for UserId Textfield
+    /// Corner Radius for Phone Textfield
     /// - Returns: Corner Radius
-    func cornerRadiusForPhoneTextfield() -> Double
+    func cornerRadiusForPhoneTextfield() -> Double // Optional
     
-    /// Input Text Font for UserId Textfield
+    /// Input Text Font for Phone Textfield
     /// - Returns: Font
-    func inputTextFontForPhoneTextfield() -> Font
+    func inputTextFontForPhoneTextfield() -> Font // Optional
     
     
     //------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ public protocol CustomLoginViewUIProtocol {
     
     /// Title Font for Forgot Password Button
     /// - Returns: Font
-    func titleFontForForgotPasswordButton() -> Font
+    func titleFontForForgotPasswordButton() -> Font // Optional
     
     
     //------------------------------------------------------------------------------------------
@@ -120,9 +120,9 @@ public protocol CustomLoginViewUIProtocol {
     /// - Returns: Text Color
     func titleColorForLoginButton() -> Color
     
-    /// Title Font for Forgot Password Button
+    /// Title Font for Login Button
     /// - Returns: Font
-    func titleFontForLoginButton() -> Font
+    func titleFontForLoginButton() -> Font // Optional
     
     /// Background Color for Login Button
     /// - Returns: Background Color
@@ -130,11 +130,11 @@ public protocol CustomLoginViewUIProtocol {
     
     /// Border Width for Login Button
     /// - Returns: Border Width
-    func borderWidthForLoginButton() -> Double
+    func borderWidthForLoginButton() -> Double // Optional
     
     /// Border Color for Login Button
     /// - Returns: Border Color
-    func borderColorForLoginButton() -> Color
+    func borderColorForLoginButton() -> Color // Optional
     
     /// Corner Radius for Login Button
     /// - Returns: Corner Radius
@@ -144,17 +144,138 @@ public protocol CustomLoginViewUIProtocol {
 
 // MARK: CustomLoginViewModelProtocol
 public protocol CustomLoginViewModelProtocol {
+    /// Callback for login button tapped
+    /// - Parameters:
+    ///   - userId: Email
+    ///   - password: Password
     func didTapLoginButtonWith(userId: String, andPassword password: String)
     
+    /// Callback for getting OTP API
+    /// - Parameter phone: Phone number
     func didTapSendOTPButton(withPhone phone: String)
     
+    // TODO: Need thought
     func loggedInSuccessFully()
     
+    // TODO: Might not need this one
     func didFailToLogin(withError errorMessage: String)
     
+    // TODO: Might not need this one
     func didTapForgotPasswordButton(withPhone phone: String)
     
+    /// Callback for frogot password button tapped
+    /// - Parameter email: Email
     func didTapForgotPasswordButton(witEmail email: String)
     
+    /// Verify OTP callback when OTP is filled
+    /// - Parameter otp: OTP
     func didTapVerify(otp: String)
+}
+
+// MARK: CustomLoginViewUIProtocol Optional Functions
+/// Optional Protocol Implementation
+/// These protocols can be used on need basis
+extension CustomLoginViewUIProtocol {
+    
+    /// Color for UserId Heading
+    /// - Returns: SwiftUI Color
+    func headingTextColorForUserIdTextfield() -> Color {
+        return .black
+    }
+    
+    /// Corner Radius for UserId Textfield
+    /// - Returns: Corner Radius
+    func cornerRadiusForUserIdTextfield() -> Double {
+        return 10
+    }
+    
+    /// Input Text Font for UserId Textfield
+    /// - Returns: Font
+    func inputTextFontForUserIdTextfield() -> Font {
+        return .body
+    }
+    
+    /// Font for UserId Heading
+    /// - Returns: SwiftUI Font
+    func headingTextFontForUserIdTextfield() -> Font {
+        return .subheadline
+    }
+    
+    /// Font for Password Heading
+    /// - Returns: SwiftUI Font
+    func headingFontForPasswordTextfield() -> Font {
+        return .subheadline
+    }
+    
+    /// Corner Radius for Password Textfield
+    /// - Returns: Corner Radius
+    func cornerRadiusForPasswordTextfield() -> Double {
+        return 10
+    }
+    
+    /// Input Text Font for Password Textfield
+    /// - Returns: Font
+    func inputTextFontForPasswordTextfield() -> Font {
+        return .body
+    }
+    
+    /// Border Width for UserId Textfield
+    /// - Returns: Border Width
+    func borderWidthForUserIdTextfield() -> Double {
+        return 1
+    }
+    
+    /// Title Font for Forgot Password Button
+    /// - Returns: Font
+    func titleFontForForgotPasswordButton() -> Font {
+        return .caption
+    }
+    
+    /// Border Width for Password Textfield
+    /// - Returns: Border Width
+    func borderWidthForPasswordTextfield() -> Double {
+        return 1
+    }
+    
+    /// Font for Phone Textfield
+    /// - Returns: SwiftUI Font
+    func headingTextFontForPhoneTextfield() -> Font {
+        return .subheadline
+    }
+    
+    /// Border Width for Phone Textfield
+    /// - Returns: Border Width
+    func borderWidthForPhoneTextfield() -> Double {
+        return 1
+    }
+    
+    /// Corner Radius for Phone Textfield
+    /// - Returns: Corner Radius
+    func cornerRadiusForPhoneTextfield() -> Double {
+        return 10
+    }
+    
+    /// Input Text Font for Phone Textfield
+    /// - Returns: Font
+    func inputTextFontForPhoneTextfield() -> Font {
+        return .body
+    }
+    
+    /// Title Font for Login Button
+    /// - Returns: Font
+    func titleFontForLoginButton() -> Font {
+        return .subheadline
+    }
+    
+    /// Border Width for Login Button
+    /// - Returns: Border Width
+    func borderWidthForLoginButton() -> Double {
+        return 0
+    }
+    
+    /// Border Color for Login Button
+    /// - Returns: Border Color
+    func borderColorForLoginButton() -> Color {
+        return .white
+    }
 }

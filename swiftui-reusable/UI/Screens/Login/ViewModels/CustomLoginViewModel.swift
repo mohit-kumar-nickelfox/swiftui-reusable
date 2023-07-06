@@ -25,12 +25,27 @@ class CustomLoginViewModel: ObservableObject {
     // Handle Phone View
     @Published var showPhoneField: Bool = true
     
+    // Signup
+    @Published var signupPhone: String?
+    @Published var signupEmail: String?
+    @Published var signupName: String?
+    @Published var signupPassword: String?
+    @Published var profileImageData: Data?
+    
+    // Toggles
+    @Published var showSignupView: Bool = false
+    
+    
     init() {
         
     }
     
     func showOTPView() {
         self.showPhoneField = false
+    }
+    
+    func toggleSignupView() {
+        self.showSignupView.toggle()
     }
     
 }
@@ -45,6 +60,10 @@ extension CustomLoginViewModel {
     func loginWithEmail() {
         self.showLoader = true
         self.delegate?.didTapLoginButtonWith(userId: self.userId ?? "", andPassword: password ?? "")
+    }
+    
+    func signup() {
+        
     }
 }
 

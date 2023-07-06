@@ -50,23 +50,7 @@ struct ParentView: View {
     var components: some View {
         DisclosureGroup(isExpanded: self.$componentsSectionCollapsed) {
             NavigationLink {
-                VStack {
-                    HStack {
-                        Text("Custom Button 1")
-                            .padding(.leading, 20)
-                        Spacer()
-                    }
-                    CustomButton(action: {print("Custom Button 1 Tapped")},
-                                 buttonTitle: "Button",
-                                 backgroundColor: .gray,
-                                 borderWidth: 2,
-                                 borderColor: .black,
-                                 cornerRadius: 8)
-                    .frame(width: UIScreen.main.bounds.size.width - 40, height: 44)
-                    .foregroundColor(.white)
-                    .font(.subheadline)
-                    .fontWeight(.heavy)
-                }
+                CustomButtonsExample()
             } label: {
                 HStack {
                     Image(systemName: "lightbulb.circle")
