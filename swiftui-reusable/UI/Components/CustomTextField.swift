@@ -30,6 +30,8 @@ public struct CustomTextField: View {
     /// Keyboard Type
     public var keyboardType: UIKeyboardType?
     
+    var onEditingChanged: ((_ changed: Bool)->())?
+    
     public var body: some View {
         
         
@@ -49,10 +51,17 @@ public struct CustomTextField: View {
             )
             .textContentType(.password)
             .keyboardType(self.keyboardType ?? .default)
+            .onTapGesture {
+                (self.onEditingChanged ?? {_ in})(true)
+            }
         } else {
             TextField(
                 placeholder,
-                text: self.$text)
+                text: self.$text,
+                onEditingChanged: { changed in
+                    
+                    (self.onEditingChanged ?? {_ in})(changed)
+                })
             .padding()
             .overlay(
                 RoundedRectangle(

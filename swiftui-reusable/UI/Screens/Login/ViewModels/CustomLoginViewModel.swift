@@ -26,11 +26,13 @@ class CustomLoginViewModel: ObservableObject {
     @Published var showPhoneField: Bool = true
     
     // Signup
+    @Published var isSignupRequired: Bool = true
     @Published var signupPhone: String?
     @Published var signupEmail: String?
     @Published var signupName: String?
     @Published var signupPassword: String?
     @Published var profileImageData: Data?
+    @Published var signupInputFields: [CustomSignupFieldType] = [.name, .email, .phone, .password]
     
     // Toggles
     @Published var showSignupView: Bool = false

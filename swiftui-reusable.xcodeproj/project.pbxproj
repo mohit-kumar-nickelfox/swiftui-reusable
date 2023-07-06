@@ -22,6 +22,17 @@
 		E689D3182A5676FB0077C37D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3172A5676FB0077C37D /* ImagePicker.swift */; };
 		E689D31A2A5677500077C37D /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3192A5677500077C37D /* ProfileImageView.swift */; };
 		E689D31C2A5687920077C37D /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D31B2A5687920077C37D /* KeyboardAdaptive.swift */; };
+		E689D31F2A56AF0C0077C37D /* CustomSignupView+Unused.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D31E2A56AF0C0077C37D /* CustomSignupView+Unused.swift */; };
+		E689D3222A56B2860077C37D /* CustomEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3212A56B2860077C37D /* CustomEditorView.swift */; };
+		E689D3252A56C85B0077C37D /* CustomEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3242A56C85B0077C37D /* CustomEditorViewModel.swift */; };
+		E689D3272A56C9140077C37D /* CustomEditorView+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3262A56C9130077C37D /* CustomEditorView+Components.swift */; };
+		E689D32A2A56D9CF0077C37D /* Arcs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3292A56D9CF0077C37D /* Arcs.swift */; };
+		E689D32E2A56DA5D0077C37D /* CustomLoadersExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D32D2A56DA5D0077C37D /* CustomLoadersExample.swift */; };
+		E689D3302A56DB3B0077C37D /* Bars.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D32F2A56DB3B0077C37D /* Bars.swift */; };
+		E689D3322A56DBA70077C37D /* Blinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3312A56DBA70077C37D /* Blinking.swift */; };
+		E689D3342A56DC060077C37D /* Classic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3332A56DC060077C37D /* Classic.swift */; };
+		E689D3362A56DC6C0077C37D /* RotatingShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3352A56DC6C0077C37D /* RotatingShapes.swift */; };
+		E689D3382A56DD150077C37D /* RowOfShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3372A56DD150077C37D /* RowOfShapes.swift */; };
 		E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */; };
 		E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3C2A4D523900EA0031 /* ContentView.swift */; };
 		E6E5CB3F2A4D523A00EA0031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5CB3E2A4D523A00EA0031 /* Assets.xcassets */; };
@@ -69,6 +80,17 @@
 		E689D3172A5676FB0077C37D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E689D3192A5677500077C37D /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		E689D31B2A5687920077C37D /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
+		E689D31E2A56AF0C0077C37D /* CustomSignupView+Unused.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomSignupView+Unused.swift"; sourceTree = "<group>"; };
+		E689D3212A56B2860077C37D /* CustomEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditorView.swift; sourceTree = "<group>"; };
+		E689D3242A56C85B0077C37D /* CustomEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditorViewModel.swift; sourceTree = "<group>"; };
+		E689D3262A56C9130077C37D /* CustomEditorView+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomEditorView+Components.swift"; sourceTree = "<group>"; };
+		E689D3292A56D9CF0077C37D /* Arcs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arcs.swift; sourceTree = "<group>"; };
+		E689D32D2A56DA5D0077C37D /* CustomLoadersExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoadersExample.swift; sourceTree = "<group>"; };
+		E689D32F2A56DB3B0077C37D /* Bars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bars.swift; sourceTree = "<group>"; };
+		E689D3312A56DBA70077C37D /* Blinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blinking.swift; sourceTree = "<group>"; };
+		E689D3332A56DC060077C37D /* Classic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classic.swift; sourceTree = "<group>"; };
+		E689D3352A56DC6C0077C37D /* RotatingShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingShapes.swift; sourceTree = "<group>"; };
+		E689D3372A56DD150077C37D /* RowOfShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowOfShapes.swift; sourceTree = "<group>"; };
 		E6E5CB372A4D523900EA0031 /* swiftui-reusable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-reusable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_reusableApp.swift; sourceTree = "<group>"; };
 		E6E5CB3C2A4D523900EA0031 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -127,6 +149,7 @@
 				E60744572A52AD8F00FBE7A2 /* LoginViewExample.swift */,
 				E649F2CC2A5456DD00D5630E /* ParentView.swift */,
 				E689D30E2A5555610077C37D /* CustomButtonsExample.swift */,
+				E689D32D2A56DA5D0077C37D /* CustomLoadersExample.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -166,6 +189,45 @@
 				E689D3152A5585160077C37D /* CustomLoginView+Components.swift */,
 			);
 			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		E689D31D2A56AEEB0077C37D /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				E689D31E2A56AF0C0077C37D /* CustomSignupView+Unused.swift */,
+			);
+			path = Unused;
+			sourceTree = "<group>";
+		};
+		E689D3202A56B2710077C37D /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				E689D3232A56C8430077C37D /* MainEditor */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		E689D3232A56C8430077C37D /* MainEditor */ = {
+			isa = PBXGroup;
+			children = (
+				E689D3212A56B2860077C37D /* CustomEditorView.swift */,
+				E689D3242A56C85B0077C37D /* CustomEditorViewModel.swift */,
+				E689D3262A56C9130077C37D /* CustomEditorView+Components.swift */,
+			);
+			path = MainEditor;
+			sourceTree = "<group>";
+		};
+		E689D3282A56D9B80077C37D /* Loaders */ = {
+			isa = PBXGroup;
+			children = (
+				E689D3292A56D9CF0077C37D /* Arcs.swift */,
+				E689D32F2A56DB3B0077C37D /* Bars.swift */,
+				E689D3312A56DBA70077C37D /* Blinking.swift */,
+				E689D3332A56DC060077C37D /* Classic.swift */,
+				E689D3352A56DC6C0077C37D /* RotatingShapes.swift */,
+				E689D3372A56DD150077C37D /* RowOfShapes.swift */,
+			);
+			path = Loaders;
 			sourceTree = "<group>";
 		};
 		E6E5CB2E2A4D523900EA0031 = {
@@ -228,6 +290,8 @@
 		E6E5CB642A4D554000EA0031 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E689D3202A56B2710077C37D /* Editor */,
+				E689D31D2A56AEEB0077C37D /* Unused */,
 				E60744542A52AD6600FBE7A2 /* Example */,
 				E6E5CB6D2A4D739000EA0031 /* Helpers */,
 				E6E5CB662A4D55AD00EA0031 /* Screens */,
@@ -239,6 +303,7 @@
 		E6E5CB652A4D554800EA0031 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E689D3282A56D9B80077C37D /* Loaders */,
 				E6E5CB672A4D55BF00EA0031 /* CustomTextField.swift */,
 				E6E5CB6B2A4D61AD00EA0031 /* CustomButton.swift */,
 				E689D30C2A553FCA0077C37D /* CustomSlider.swift */,
@@ -398,14 +463,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E689D3162A5585160077C37D /* CustomLoginView+Components.swift in Sources */,
+				E689D3342A56DC060077C37D /* Classic.swift in Sources */,
 				E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */,
 				E689D31C2A5687920077C37D /* KeyboardAdaptive.swift in Sources */,
 				E689D30D2A553FCA0077C37D /* CustomSlider.swift in Sources */,
 				E60744612A52D6FA00FBE7A2 /* LoginType.swift in Sources */,
+				E689D3382A56DD150077C37D /* RowOfShapes.swift in Sources */,
 				E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */,
+				E689D3222A56B2860077C37D /* CustomEditorView.swift in Sources */,
+				E689D3252A56C85B0077C37D /* CustomEditorViewModel.swift in Sources */,
 				E6E5CB6F2A4D73A700EA0031 /* TextfieldModifiers.swift in Sources */,
 				E689D3112A5570490077C37D /* CustomSignupView.swift in Sources */,
 				E649F2CD2A5456DD00D5630E /* ParentView.swift in Sources */,
+				E689D3322A56DBA70077C37D /* Blinking.swift in Sources */,
 				E6E5CB682A4D55BF00EA0031 /* CustomTextField.swift in Sources */,
 				E6E5CB712A4D9D7B00EA0031 /* Vaildation.swift in Sources */,
 				E607445F2A52D0F700FBE7A2 /* SegmentedLoginView.swift in Sources */,
@@ -413,11 +483,17 @@
 				E60744532A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift in Sources */,
 				E689D30F2A5555610077C37D /* CustomButtonsExample.swift in Sources */,
 				E689D3142A5575EC0077C37D /* CustomSignupView+Components.swift in Sources */,
+				E689D32E2A56DA5D0077C37D /* CustomLoadersExample.swift in Sources */,
 				E689D31A2A5677500077C37D /* ProfileImageView.swift in Sources */,
+				E689D3302A56DB3B0077C37D /* Bars.swift in Sources */,
 				E6E5CB6A2A4D5F8F00EA0031 /* CustomLoginView.swift in Sources */,
+				E689D3272A56C9140077C37D /* CustomEditorView+Components.swift in Sources */,
 				E60744632A53E5E500FBE7A2 /* PhoneOTPView.swift in Sources */,
+				E689D31F2A56AF0C0077C37D /* CustomSignupView+Unused.swift in Sources */,
+				E689D3362A56DC6C0077C37D /* RotatingShapes.swift in Sources */,
 				E689D3182A5676FB0077C37D /* ImagePicker.swift in Sources */,
 				E6E5CB6C2A4D61AD00EA0031 /* CustomButton.swift in Sources */,
+				E689D32A2A56D9CF0077C37D /* Arcs.swift in Sources */,
 				E60744582A52AD8F00FBE7A2 /* LoginViewExample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

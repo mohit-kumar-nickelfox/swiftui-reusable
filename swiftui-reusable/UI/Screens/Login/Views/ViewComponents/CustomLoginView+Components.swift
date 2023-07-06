@@ -28,6 +28,10 @@ extension CustomLoginView {
             if self.showEmailView {
                 emailView
                     .frame(width: UIScreen.main.bounds.width - 40)
+                
+                if self.viewModel.isSignupRequired {
+                    signupButtonView
+                }
             } else {
                 EmptyView()
             }
@@ -37,7 +41,6 @@ extension CustomLoginView {
                     .frame(width: UIScreen.main.bounds.width - 40)
             }
             
-            signupButtonView
             
             Spacer()
             
@@ -73,7 +76,11 @@ extension CustomLoginView {
             VStack(alignment: .leading) {
                 
                 Text(phoneTitle)
-                    .foregroundColor(self.phoneTitleColor ?? .black)
+                    .foregroundColor(self.phoneTitleColor ?? (
+                        self.colorScheme == .light
+                        ? .black
+                        : .white
+                    ))
                     .font(self.phoneTitleFont ?? .body)
                 CustomTextField(
                     placeholder: "987654321",
@@ -81,7 +88,11 @@ extension CustomLoginView {
                     isSecureField: false,
                     borderWidth: self.phoneTextFieldBorderWidth ?? 1,
                     borderColor: self.phoneErrorText.isEmpty
-                    ? self.phoneTextFieldBorderColor ?? .black
+                    ? self.phoneTextFieldBorderColor ?? (
+                        self.colorScheme == .light
+                        ? .black
+                        : .white
+                    )
                     : .red,
                     cornerRadius: self.phoneTextFieldCornerRadius ?? 8,
                     keyboardType: .phonePad)
@@ -146,7 +157,11 @@ extension CustomLoginView {
         VStack(alignment: .leading) {
             
             Text(userIdTitle)
-                .foregroundColor(self.userIdTitleColor ?? .black)
+                .foregroundColor(self.userIdTitleColor ?? (
+                    self.colorScheme == .light
+                    ? .black
+                    : .white
+                ))
                 .font(self.userIdTitleFont ?? .body)
 //                    .fontWeight(self.userIdTitleFontWeight ?? .medium)
             CustomTextField(
@@ -155,11 +170,15 @@ extension CustomLoginView {
                 isSecureField: false,
                 borderWidth: self.userIdTextFieldBorderWidth ?? 1,
                 borderColor: self.userIdErrorText.isEmpty
-                ? self.phoneTextFieldBorderColor ?? .black
+                ? self.phoneTextFieldBorderColor ?? (
+                    self.colorScheme == .light
+                    ? .black
+                    : .white
+                )
                 : .red,
                 cornerRadius: self.userIdTextFieldCornerRadius ?? 8,
                 keyboardType: .emailAddress)
-//            .textContentType(.emailAddress)
+            //            .textContentType(.emailAddress)
             .font(self.userIdTextFont ?? .body)
             .autocorrectionDisabled()
             .textInputAutocapitalization(.never)
@@ -184,7 +203,11 @@ extension CustomLoginView {
         VStack(alignment: .leading) {
             
             Text(passwordTitle)
-                .foregroundColor(self.passwordTitleColor ?? .black)
+                .foregroundColor(self.passwordTitleColor ?? (
+                    self.colorScheme == .light
+                    ? .black
+                    : .white
+                ))
                 .font(self.passwordTitleFont ?? .body)
 //                    .fontWeight(self.passwordTextFontWeight ?? .medium)
             CustomTextField(
@@ -193,7 +216,11 @@ extension CustomLoginView {
                 isSecureField: true,
                 borderWidth: self.passwordTextFieldBorderWidth ?? 1,
                 borderColor: self.passwordErrorText.isEmpty
-                ? self.phoneTextFieldBorderColor ?? .black
+                ? self.phoneTextFieldBorderColor ?? (
+                    self.colorScheme == .light
+                    ? .black
+                    : .white
+                )
                 : .red,
                 cornerRadius: self.passwordTextFieldCornerRadius ?? 8,
                 keyboardType: .default)
@@ -250,7 +277,11 @@ extension CustomLoginView {
             CustomButton(
                 action: forgotPasswordAction,
                 buttonTitle: "ForgotPassword?")
-            .foregroundColor(self.forgotPasswordButtonTitleColor ?? .black)
+            .foregroundColor(self.forgotPasswordButtonTitleColor ?? (
+                self.colorScheme == .light
+                ? .black
+                :.white)
+            )
             .font(self.forgotPasswordButtonTitleFont ?? .caption)
         }
     }

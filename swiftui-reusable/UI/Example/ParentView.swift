@@ -11,12 +11,14 @@ struct ParentView: View {
     
     @State var screensSectionCollapsed: Bool = false
     @State var componentsSectionCollapsed: Bool = false
+    @State var editorsSectionCollapsed: Bool = false
     var body: some View {
         NavigationView {
             VStack {
                 List {
                     screens
                     components
+                    editors
                 }
             }
             .listStyle(SidebarListStyle())
@@ -62,6 +64,28 @@ struct ParentView: View {
             HStack {
                 Image(systemName: "puzzlepiece.extension")
                 Text("Components")
+                    .font(.headline)
+            }
+        }
+    }
+    
+    /// Editors Section
+    /// 1.Main Editor
+    var editors: some View {
+        DisclosureGroup(isExpanded: self.$editorsSectionCollapsed) {
+            NavigationLink {
+                CustomEditorView()
+            } label: {
+                HStack {
+                    Image(systemName: "slider.vertical.3")
+                    Text("Main Editor")
+                }
+            }
+            
+        } label: {
+            HStack {
+                Image(systemName: "slider.horizontal.2.square.on.square")
+                Text("Editors")
                     .font(.headline)
             }
         }

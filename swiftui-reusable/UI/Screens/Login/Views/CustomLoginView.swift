@@ -11,6 +11,8 @@ import SwiftUI
 
 public struct CustomLoginView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let animationDuration: Double = 0.5
     
     @ObservedObject var viewModel: CustomLoginViewModel
