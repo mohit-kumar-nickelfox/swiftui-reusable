@@ -33,6 +33,7 @@
 		E689D3342A56DC060077C37D /* Classic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3332A56DC060077C37D /* Classic.swift */; };
 		E689D3362A56DC6C0077C37D /* RotatingShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3352A56DC6C0077C37D /* RotatingShapes.swift */; };
 		E689D3382A56DD150077C37D /* RowOfShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3372A56DD150077C37D /* RowOfShapes.swift */; };
+		E689D33A2A56F03E0077C37D /* LoaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3392A56F03E0077C37D /* LoaderButton.swift */; };
 		E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */; };
 		E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3C2A4D523900EA0031 /* ContentView.swift */; };
 		E6E5CB3F2A4D523A00EA0031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5CB3E2A4D523A00EA0031 /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 		E689D3332A56DC060077C37D /* Classic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classic.swift; sourceTree = "<group>"; };
 		E689D3352A56DC6C0077C37D /* RotatingShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingShapes.swift; sourceTree = "<group>"; };
 		E689D3372A56DD150077C37D /* RowOfShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowOfShapes.swift; sourceTree = "<group>"; };
+		E689D3392A56F03E0077C37D /* LoaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderButton.swift; sourceTree = "<group>"; };
 		E6E5CB372A4D523900EA0031 /* swiftui-reusable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-reusable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_reusableApp.swift; sourceTree = "<group>"; };
 		E6E5CB3C2A4D523900EA0031 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				E6E5CB6B2A4D61AD00EA0031 /* CustomButton.swift */,
 				E689D30C2A553FCA0077C37D /* CustomSlider.swift */,
 				E689D3192A5677500077C37D /* ProfileImageView.swift */,
+				E689D3392A56F03E0077C37D /* LoaderButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				E60744502A52A19600FBE7A2 /* CustomLoginViewModel.swift in Sources */,
 				E60744532A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift in Sources */,
 				E689D30F2A5555610077C37D /* CustomButtonsExample.swift in Sources */,
+				E689D33A2A56F03E0077C37D /* LoaderButton.swift in Sources */,
 				E689D3142A5575EC0077C37D /* CustomSignupView+Components.swift in Sources */,
 				E689D32E2A56DA5D0077C37D /* CustomLoadersExample.swift in Sources */,
 				E689D31A2A5677500077C37D /* ProfileImageView.swift in Sources */,

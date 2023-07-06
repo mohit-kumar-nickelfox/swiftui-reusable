@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CustomButtonsExample: View {
     
+    @State var isLB1Animating: Bool = false
+    @State var isLB2Animating: Bool = false
+    
     @Environment(\.colorScheme) var colorScheme
     
     // MARK: Body
@@ -16,11 +19,9 @@ struct CustomButtonsExample: View {
         ScrollView {
             VStack(spacing: 20) {
                 HStack{}.frame(height: 1)
-                customButton1
+                customBasicButtons
                 divider
-                customButton2
-                divider
-                customButton3
+                loaderButtons
                 HStack{}.frame(height: 1)
             }
                 .overlay(
@@ -33,6 +34,24 @@ struct CustomButtonsExample: View {
                 .cornerRadius(20)
 //                .shadow(radius: 20)
                 
+        }
+    }
+    
+    var customBasicButtons: some View {
+        VStack {
+            customButton1
+            divider
+            customButton2
+            divider
+            customButton3
+        }
+    }
+    
+    var loaderButtons: some View {
+        VStack {
+            loaderButton1
+            divider
+            loaderButton2
         }
     }
     
@@ -120,6 +139,54 @@ struct CustomButtonsExample: View {
                 transaction.animation = .easeIn(duration: 0.5)
             }
             
+        }
+    }
+    
+    var loaderButton1: some View {
+        VStack {
+            HStack {
+                Text("Loader Button 1: Plane \n\nWidth: 108 \n Background Color: Mint \n Border Color: Yellow \n Corner Radius: 8 \n Border Width: 2 \n Foreground Color: Black(Loader picks from here) \n Loader Type: Basic")
+                    .padding(.leading, 20)
+                Spacer()
+            }
+            LoaderButton(isAnimating: self.$isLB1Animating,
+                         loaderType: .constant(.basic),
+                         action: { self.isLB1Animating.toggle() },
+                         buttonTitle: "Animate",
+                         frame: CGRect(
+                            x: 0,
+                            y: 0,
+                            width: 108,
+                            height: 44),
+                         backgroundColor: .mint,
+                         borderWidth: 2,
+                         borderColor: .yellow,
+                         cornerRadius: 8)
+            .foregroundColor(.black)
+        }
+    }
+    
+    var loaderButton2: some View {
+        VStack {
+            HStack {
+                Text("Loader Button 1: Plane \n\nWidth: 108 \n Background Color: Mint \n Border Color: Yellow \n Corner Radius: 8 \n Border Width: 2 \n Foreground Color: Black(Loader picks from here) \n Loader Type: Classic")
+                    .padding(.leading, 20)
+                Spacer()
+            }
+            LoaderButton(isAnimating: self.$isLB2Animating,
+                         loaderType: .constant(.classic),
+                         action: { self.isLB2Animating.toggle() },
+                         buttonTitle: "Animate",
+                         frame: CGRect(
+                            x: 0,
+                            y: 0,
+                            width: 108,
+                            height: 44),
+                         backgroundColor: .mint,
+                         borderWidth: 2,
+                         borderColor: .yellow,
+                         cornerRadius: 8)
+            .foregroundColor(.black)
         }
     }
 }

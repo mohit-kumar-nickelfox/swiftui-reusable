@@ -21,6 +21,7 @@ public enum CustomComponents: String {
 public enum CustomScreen {
     case login
     case signup
+    case loader
     
     var title: String {
         switch self {
@@ -28,6 +29,8 @@ public enum CustomScreen {
             return "Login"
         case .signup:
             return "Signup"
+        case .loader:
+            return "Loader"
         }
     }
     
@@ -45,6 +48,8 @@ public enum CustomScreen {
             ]
         case .signup:
             return []
+        case .loader:
+            return []
         }
     }
 }
@@ -52,6 +57,7 @@ public enum CustomScreen {
 class CustomEditorViewModel: ObservableObject {
     @Published var customLoginViewModel = CustomLoginViewModel()
     
+    @Published var allScreens: [CustomScreen] = [.login, .signup, .loader]
     @Published var selectedScreen: CustomScreen = .login
     @Published var selectedComponent: CustomComponents = .none
     

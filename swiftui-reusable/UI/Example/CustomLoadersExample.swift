@@ -10,8 +10,8 @@ import SwiftUI
 struct CustomLoadersExample: View {
     @State var isAnimating: Bool = false
     
-    let width: Double = 80
-    let height: Double = 80
+    let width: Double = 60
+    let height: Double = 60
     var body: some View {
 //        ScrollView {
             VStack(spacing: 20) {
@@ -48,8 +48,39 @@ struct CustomLoadersExample: View {
     }
 }
 
+// MARK: Preview
 struct CustomLoadersExample_Previews: PreviewProvider {
     static var previews: some View {
         CustomLoadersExample()
+    }
+}
+
+public enum CustomLoaderType {
+    case basic, arcs, bars, blinking, classic, rotatingShapes, rowOfShapes
+    
+    func loader(binder: Binding<Bool>) -> some View {
+        return VStack {
+            switch self {
+            case .basic:
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .padding()
+                    .tint(Color.black)
+            case .arcs:
+                Arcs(animate: binder)
+                
+            case .bars:
+                Bars(animate: binder)
+            case .blinking:
+                Blinking(animate: binder)
+            case .classic:
+                Classic(animate: binder)
+                    .tint(.black)
+            case .rotatingShapes:
+                RotatingShapes(animate: binder)
+            case .rowOfShapes:
+                RowOfShapes(animate: binder)
+            }
+        }
     }
 }

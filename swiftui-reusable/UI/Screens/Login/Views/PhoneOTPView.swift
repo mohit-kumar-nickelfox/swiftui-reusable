@@ -8,6 +8,7 @@
 import SwiftUI
 
 public struct PhoneOTPView: View {
+    @Binding var isLoading: Bool
     public var phoneNumber: String
     public var otpFilled: (_ otp: String)->Void
     public var getOTPAgain: ()->Void
@@ -134,12 +135,13 @@ public struct PhoneOTPView: View {
     }
     
     var verifyButton: some View {
-        CustomButton(
-            action: self.sendOTP,
-            buttonTitle: "Verify",
-            frame: CGRect(x: 00, y: 0, width: 108, height: 34),
-            backgroundColor: verifyButtonDisabled ? .black.opacity(0.2) : .teal,
-            cornerRadius: 17)
+        LoaderButton(isAnimating: self.$isLoading,
+                     loaderType: .constant(.basic),
+                     action: self.sendOTP,
+                     buttonTitle: "Verify",
+                     frame: CGRect(x: 00, y: 0, width: 108, height: 34),
+                     backgroundColor: verifyButtonDisabled ? .black.opacity(0.2) : .teal,
+                     cornerRadius: 17)
         .disabled(self.verifyButtonDisabled)
         .foregroundColor(.black)
         
@@ -188,6 +190,7 @@ extension PhoneOTPView {
 struct PhoneOTPView_Previews: PreviewProvider {
     static var previews: some View {
         PhoneOTPView(
+            isLoading: .constant(false),
             phoneNumber: "06394026062",
             otpFilled: {_ in },
             getOTPAgain: {},

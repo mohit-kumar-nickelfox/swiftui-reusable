@@ -126,15 +126,15 @@ public struct CustomLoginView: View {
             
             
                         
-            if self.viewModel.showLoader {
-                VStack {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .padding()
-                        .tint(Color.black)
-                }
-                .allowsHitTesting(true)
-            }
+//            if self.viewModel.showLoader {
+//                VStack {
+//                    ProgressView()
+//                        .progressViewStyle(CircularProgressViewStyle())
+//                        .padding()
+//                        .tint(Color.black)
+//                }
+//                .allowsHitTesting(true)
+//            }
             
         }
         .onAppear {

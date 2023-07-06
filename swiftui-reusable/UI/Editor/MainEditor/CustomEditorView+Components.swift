@@ -15,7 +15,7 @@ extension CustomEditorView {
                 VStack(spacing: 4) {
                     ScrollView(.horizontal) {
                         HStack {
-                            ForEach(screens, id: \.self) { screen in
+                            ForEach(self.viewModel.allScreens, id: \.self) { screen in
                                 VStack {
                                     Button {
                                         print(screen.title, "tapped")

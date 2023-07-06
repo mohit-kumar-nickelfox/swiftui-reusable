@@ -15,8 +15,6 @@ struct CustomEditorView: View {
     
     let editorAnimationDuration: Double = 0.4
     
-    let screens: [CustomScreen] = [.login, .signup]
-    
     @State var showEditor: Bool = true
     var body: some View {
         ZStack {
@@ -45,6 +43,7 @@ extension CustomEditorView {
             switch self.viewModel.selectedScreen {
             case .login: loginScreen()
             case .signup: signupScreen()
+            case .loader: CustomLoadersExample()
             }
         }
     }

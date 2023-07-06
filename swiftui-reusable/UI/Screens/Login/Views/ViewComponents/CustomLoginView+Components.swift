@@ -61,6 +61,7 @@ extension CustomLoginView {
             } else {
                 // Show OTP View
                 PhoneOTPView(
+                    isLoading: self.$viewModel.showLoader,
                     phoneNumber: self.viewModel.phoneNumber ?? "",
                     otpFilled: self.otpFilled(_:),
                     getOTPAgain: self.viewModel.getOTP,
@@ -248,7 +249,9 @@ extension CustomLoginView {
         HStack {
             
             Spacer()
-            CustomButton(action: self.viewModel.loginWithEmail,
+            LoaderButton(isAnimating: self.$viewModel.showLoader,
+                         loaderType: .constant(.classic),
+                         action: self.viewModel.loginWithEmail,
                          buttonTitle: "Login",
                          backgroundColor: loginButtonDisabled
                          ? .gray

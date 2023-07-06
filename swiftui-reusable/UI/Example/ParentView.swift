@@ -60,6 +60,15 @@ struct ParentView: View {
                 }
             }
             
+            NavigationLink {
+                CustomLoadersExample()
+            } label: {
+                HStack {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                    Text("Custom Loaders")
+                }
+            }
+            
         } label: {
             HStack {
                 Image(systemName: "puzzlepiece.extension")
