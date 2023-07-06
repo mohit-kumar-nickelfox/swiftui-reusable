@@ -22,22 +22,25 @@ extension CustomSignupView {
                     isSecureField: false,
                     borderWidth: self.textfieldBorderWidth ?? 1,
                     borderColor: self.phoneErrorText.isEmpty
-                    ? self.textfieldBorderColor ?? (self.colorScheme == .light ? .black : .white)
+                    ? self.textfieldBorderColor ?? (
+                        self.colorScheme == .light
+                        ? .black :
+                                .white)
                     : .red,
                     cornerRadius: self.textfieldCornerRadius ?? 8,
                     keyboardType: .namePhonePad,
-                    onEditingChanged: {changed in if changed { self.kGuardian.showField = 0 } })
-                .background(GeometryGetter(rect: $kGuardian.rects[0])) // 1
-                .focused($focusedField, equals: .name) // 1
+                    onEditingChanged: {if $0 { self.kGuardian.showField = 0 } })
+                .background(GeometryGetter(rect: $kGuardian.rects[0]))
+                .focused($focusedField, equals: .name)
                 .font(self.textFont ?? .body)
-                .autocorrectionDisabled() // same
+                .autocorrectionDisabled()
                 .onChange(of: self.name) { newValue in
                     self.viewModel.signupName = newValue
                     self.nameErrorText = !newValue.isEmpty
                     ? ""
                     : "Name cannot be empty"
                     self.signupButtonDisabled = newValue.isEmpty
-                } //
+                }
                 .textContentType(.name)
                 Text(self.nameErrorText)
                     .foregroundColor(.red)
@@ -66,7 +69,7 @@ extension CustomSignupView {
                     : .red,
                     cornerRadius: self.textfieldCornerRadius ?? 8,
                     keyboardType: .phonePad,
-                    onEditingChanged: {changed in if changed { self.kGuardian.showField = 1 } })
+                    onEditingChanged: { if $0 { self.kGuardian.showField = 1 } })
                 .background(GeometryGetter(rect: $kGuardian.rects[1]))
                 .textContentType(.telephoneNumber)
                 .focused($focusedField, equals: .phone)
@@ -109,7 +112,7 @@ extension CustomSignupView {
                     : .red,
                     cornerRadius: self.textfieldCornerRadius ?? 8,
                     keyboardType: .emailAddress,
-                    onEditingChanged: {changed in if changed { self.kGuardian.showField = 2 } })
+                    onEditingChanged: { if $0 { self.kGuardian.showField = 2 } })
                 .background(GeometryGetter(rect: $kGuardian.rects[2]))
                 .focused($focusedField, equals: .email)
                 .font(self.textFont ?? .body)
@@ -142,7 +145,6 @@ extension CustomSignupView {
             Text("Password")
                 .foregroundColor(self.titleColor ?? (self.colorScheme == .light ? .black : .white))
                 .font(self.titleFont ?? .body)
-//                    .fontWeight(self.passwordTextFontWeight ?? .medium)
             CustomTextField(
                 placeholder: "************",
                 text: self.$password,
@@ -153,7 +155,7 @@ extension CustomSignupView {
                 : .red,
                 cornerRadius: self.textfieldCornerRadius ?? 8,
                 keyboardType: .emailAddress,
-                onEditingChanged: {changed in if changed { self.kGuardian.showField = 3 } })
+                onEditingChanged: { if $0 { self.kGuardian.showField = 3 } })
             .background(GeometryGetter(rect: $kGuardian.rects[3]))
             .focused($focusedField, equals: .password)
             .textContentType(.password)

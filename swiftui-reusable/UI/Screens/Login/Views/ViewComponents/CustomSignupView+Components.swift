@@ -20,7 +20,7 @@ extension CustomSignupView {
     }
     
     // MARK: Textfield Views
-    var textFieldsViews: some View {
+    var textFieldsView: some View {
         VStack(alignment: .leading) {
             
             ForEach(0..<self.viewModel.signupInputFields.count, id: \.self) { index in

@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension CustomEditorView {
+    
     // MARK: Editor View
     var editorView: some View {
         VStack(spacing: 0) {
@@ -44,23 +45,16 @@ extension CustomEditorView {
                     .frame(height: 40)
                     .background(Color.gray)
                     
-                    
-                    
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(self.viewModel.selectedScreen.components, id: \.self) { component in
                                 VStack {
                                     Button {
-                                        print(component.rawValue, "tapped")
-//                                        self.viewModel.selectedScreen
+                                        // TODO: Add action for component tap
                                     } label: {
                                         Text(component.rawValue)
                                             .font(.caption)
                                             .foregroundColor(.white)
-//                                            .foregroundColor(
-//                                                colorScheme == .light
-//                                                ? .black
-//                                                : .white)
                                             .padding(5)
                                             
                                     }

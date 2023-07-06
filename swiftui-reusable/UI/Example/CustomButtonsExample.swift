@@ -32,8 +32,6 @@ struct CustomButtonsExample: View {
                 )
                 .padding(20)
                 .cornerRadius(20)
-//                .shadow(radius: 20)
-                
         }
     }
     

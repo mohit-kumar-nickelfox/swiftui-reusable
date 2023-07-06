@@ -34,6 +34,9 @@
 		E689D3362A56DC6C0077C37D /* RotatingShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3352A56DC6C0077C37D /* RotatingShapes.swift */; };
 		E689D3382A56DD150077C37D /* RowOfShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3372A56DD150077C37D /* RowOfShapes.swift */; };
 		E689D33A2A56F03E0077C37D /* LoaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3392A56F03E0077C37D /* LoaderButton.swift */; };
+		E689D33D2A57088D0077C37D /* CustomSignupFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D33C2A57088D0077C37D /* CustomSignupFieldType.swift */; };
+		E689D3402A5708E20077C37D /* CustomScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D33F2A5708E20077C37D /* CustomScreen.swift */; };
+		E689D3422A5709070077C37D /* CustomComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3412A5709070077C37D /* CustomComponents.swift */; };
 		E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */; };
 		E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3C2A4D523900EA0031 /* ContentView.swift */; };
 		E6E5CB3F2A4D523A00EA0031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5CB3E2A4D523A00EA0031 /* Assets.xcassets */; };
@@ -93,6 +96,9 @@
 		E689D3352A56DC6C0077C37D /* RotatingShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingShapes.swift; sourceTree = "<group>"; };
 		E689D3372A56DD150077C37D /* RowOfShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowOfShapes.swift; sourceTree = "<group>"; };
 		E689D3392A56F03E0077C37D /* LoaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderButton.swift; sourceTree = "<group>"; };
+		E689D33C2A57088D0077C37D /* CustomSignupFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignupFieldType.swift; sourceTree = "<group>"; };
+		E689D33F2A5708E20077C37D /* CustomScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScreen.swift; sourceTree = "<group>"; };
+		E689D3412A5709070077C37D /* CustomComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComponents.swift; sourceTree = "<group>"; };
 		E6E5CB372A4D523900EA0031 /* swiftui-reusable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-reusable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_reusableApp.swift; sourceTree = "<group>"; };
 		E6E5CB3C2A4D523900EA0031 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 		E60744512A52A45B00FBE7A2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				E689D33B2A57087B0077C37D /* LoginHelpers */,
 				E607445B2A52B25200FBE7A2 /* Views */,
 				E607445A2A52B23E00FBE7A2 /* Protocols */,
 				E60744592A52B23100FBE7A2 /* ViewModels */,
@@ -204,6 +211,7 @@
 		E689D3202A56B2710077C37D /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				E689D33E2A5708C20077C37D /* EditorHelpers */,
 				E689D3232A56C8430077C37D /* MainEditor */,
 			);
 			path = Editor;
@@ -230,6 +238,23 @@
 				E689D3372A56DD150077C37D /* RowOfShapes.swift */,
 			);
 			path = Loaders;
+			sourceTree = "<group>";
+		};
+		E689D33B2A57087B0077C37D /* LoginHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				E689D33C2A57088D0077C37D /* CustomSignupFieldType.swift */,
+			);
+			path = LoginHelpers;
+			sourceTree = "<group>";
+		};
+		E689D33E2A5708C20077C37D /* EditorHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				E689D33F2A5708E20077C37D /* CustomScreen.swift */,
+				E689D3412A5709070077C37D /* CustomComponents.swift */,
+			);
+			path = EditorHelpers;
 			sourceTree = "<group>";
 		};
 		E6E5CB2E2A4D523900EA0031 = {
@@ -473,6 +498,8 @@
 				E60744612A52D6FA00FBE7A2 /* LoginType.swift in Sources */,
 				E689D3382A56DD150077C37D /* RowOfShapes.swift in Sources */,
 				E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */,
+				E689D3402A5708E20077C37D /* CustomScreen.swift in Sources */,
+				E689D3422A5709070077C37D /* CustomComponents.swift in Sources */,
 				E689D3222A56B2860077C37D /* CustomEditorView.swift in Sources */,
 				E689D3252A56C85B0077C37D /* CustomEditorViewModel.swift in Sources */,
 				E6E5CB6F2A4D73A700EA0031 /* TextfieldModifiers.swift in Sources */,
@@ -495,6 +522,7 @@
 				E60744632A53E5E500FBE7A2 /* PhoneOTPView.swift in Sources */,
 				E689D31F2A56AF0C0077C37D /* CustomSignupView+Unused.swift in Sources */,
 				E689D3362A56DC6C0077C37D /* RotatingShapes.swift in Sources */,
+				E689D33D2A57088D0077C37D /* CustomSignupFieldType.swift in Sources */,
 				E689D3182A5676FB0077C37D /* ImagePicker.swift in Sources */,
 				E6E5CB6C2A4D61AD00EA0031 /* CustomButton.swift in Sources */,
 				E689D32A2A56D9CF0077C37D /* Arcs.swift in Sources */,

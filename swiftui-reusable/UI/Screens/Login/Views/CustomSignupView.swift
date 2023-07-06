@@ -14,8 +14,6 @@ public struct CustomSignupView: View {
     
     @ObservedObject var viewModel: CustomLoginViewModel
     
-//    var textfieldTypes: [CustomSignupFieldType] = [.name, .email, .phone, .password]
-    
     @State var phone: String = ""
     @State var email: String = ""
     @State var name: String = ""
@@ -50,7 +48,7 @@ public struct CustomSignupView: View {
         ScrollView {
             VStack {
                 profileImageView
-                textFieldsViews.padding(.horizontal, 2)
+                textFieldsView.padding(.horizontal, 2)
                 SignupButton.padding(.horizontal, 2)
                 loginButtonView
             }
@@ -102,29 +100,21 @@ extension CustomSignupView {
             self.nameErrorText = !text.isEmpty
             ? ""
             : "Name cannot be empty"
-            print(text, "In name")
-//            self.signupButtonDisabled = text.isEmpty
         case .email:
             self.viewModel.signupEmail = text
             self.emailErrorText = text.isValidEmail
             ? ""
             : "Invalid Email"
-            print(text, "In email")
-//            self.signupButtonDisabled = text.isEmpty
         case .phone:
             self.viewModel.signupPhone = text
             self.phoneErrorText = text.isValidPhone
             ? ""
             : "Invalid Phone"
-            print(text, "In phone")
-//            self.signupButtonDisabled = text.isEmpty
         case .password:
             self.viewModel.signupPassword = text
             self.passwordErrorText = Validation.isValid(password: text)
             ? ""
             : "Password should be atleast 5 characters long"
-            print(text, "In password")
-//            self.signupButtonDisabled = text.isEmpty
         }
     }
     
@@ -175,103 +165,6 @@ struct CustomSignupView_Previews: PreviewProvider {
     static var previews: some View {
         CustomSignupView(
             viewModel: CustomLoginViewModel())
-    }
-}
-
-// MARK: CustomSignupFieldType
-public enum CustomSignupFieldType: String {
-    case name = "name"
-    case phone = "phone"
-    case email = "email"
-    case password = "password"
-    
-    var defaultTitle: String {
-        switch self {
-        case .name:
-            return "Name"
-        case .phone:
-            return "Phone"
-        case .email:
-            return "Email"
-        case .password:
-            return "Password"
-        }
-    }
-    
-    var defaultTitleColorLight: Color {
-        return .black
-    }
-    
-    var defaultTitleColorDark: Color {
-        return .white
-    }
-    
-    var defaultTitleFont: Font {
-        return .body
-    }
-    
-    var defaultPlaceholder: String {
-        switch self {
-        case .name:
-            return "Enter your name"
-        case .phone:
-            return "+01234567890"
-        case .email:
-            return "xyz@example.com"
-        case .password:
-            return "********"
-        }
-    }
-    
-    var defaultTextFont: Font {
-        return .body
-    }
-    
-    var isSecureField: Bool {
-        switch self {
-        case .name, .email, .phone: return false
-        case .password: return true
-        }
-    }
-    
-    var defaultBorderWidth: Double {
-        return 1
-    }
-    
-    var defaultBorderColorLight: Color {
-        return .black
-    }
-    
-    var defaultBorderColorDark: Color {
-        return .white
-    }
-    
-    var defaultCornerRadius: Double {
-        return 8
-    }
-    
-    var keyboardType: UIKeyboardType {
-        switch self {
-        case .name:
-            return .namePhonePad
-        case .phone:
-            return .phonePad
-        case .email, .password:
-            return .emailAddress
-        }
-    }
-    
-    var textContentType: UITextContentType {
-        switch self {
-        case .name:
-            return .name
-        case .phone:
-            return .telephoneNumber
-        case .email:
-            return .emailAddress
-        case .password:
-            return .newPassword
-        }
     }
 }
 

@@ -20,7 +20,6 @@ struct LoginViewExample: View {
                 loginView()
             }
         }
-        
     }
     
     func loginView() -> some View {

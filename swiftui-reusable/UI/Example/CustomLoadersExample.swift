@@ -13,38 +13,32 @@ struct CustomLoadersExample: View {
     let width: Double = 60
     let height: Double = 60
     var body: some View {
-//        ScrollView {
-            VStack(spacing: 20) {
-                
-                Button {
-                    self.isAnimating.toggle()
-                } label: {
-                    Text(isAnimating ? "Stop Animating" : "Animate")
-                }
-                
-//                HStack{}.frame(height: 100)
-
-                Arcs(animate: self.$isAnimating)
-                    .frame(width: width, height: height)
-                
-                Bars(animate: self.$isAnimating)
-                    .frame(width: width, height: height)
-                
-                Blinking(animate: self.$isAnimating)
-                    .frame(width: width, height: height)
-                
-                Classic(animate: self.$isAnimating)
-                    .frame(width: width, height: height)
-                
-                RotatingShapes(animate: self.$isAnimating)
-                    .frame(width: width, height: height)
-
-                RowOfShapes(animate: self.$isAnimating)
-                    .frame(width: width, height: height)
+        VStack(spacing: 20) {
+            
+            Button {
+                self.isAnimating.toggle()
+            } label: {
+                Text(isAnimating ? "Stop Animating" : "Animate")
             }
-//        }
-//        .frame(width: UIScreen.main.bounds.size.width,
-//                height: UIScreen.main.bounds.size.height)
+            
+            Arcs(animate: self.$isAnimating)
+                .frame(width: width, height: height)
+            
+            Bars(animate: self.$isAnimating)
+                .frame(width: width, height: height)
+            
+            Blinking(animate: self.$isAnimating)
+                .frame(width: width, height: height)
+            
+            Classic(animate: self.$isAnimating)
+                .frame(width: width, height: height)
+            
+            RotatingShapes(animate: self.$isAnimating)
+                .frame(width: width, height: height)
+            
+            RowOfShapes(animate: self.$isAnimating)
+                .frame(width: width, height: height)
+        }
     }
 }
 
@@ -68,14 +62,12 @@ public enum CustomLoaderType {
                     .tint(Color.black)
             case .arcs:
                 Arcs(animate: binder)
-                
             case .bars:
                 Bars(animate: binder)
             case .blinking:
                 Blinking(animate: binder)
             case .classic:
                 Classic(animate: binder)
-                    .tint(.black)
             case .rotatingShapes:
                 RotatingShapes(animate: binder)
             case .rowOfShapes:
