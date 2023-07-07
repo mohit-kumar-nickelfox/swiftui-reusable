@@ -12,7 +12,14 @@ extension CustomLoginView {
     // MARK: Signup View
     var signupView: some View {
         CustomSignupView(
-            viewModel: self.viewModel)
+            viewModel: CustomLoginViewModel(),
+            textfieldTitleFont: self.$textfieldTitleFont,
+            textfieldTitleColor: self.$textfieldTitleColor,
+            textfieldBorderWidth: self.$textfieldBorderWidth,
+            textfieldBorderColor: self.$textfieldBorderColor,
+            textfieldCornerRadius: self.$textfieldCornerRadius,
+            textfieldTextFont: self.$textfieldTextFont,
+            textfieldTextColor: self.$textfieldTextColor)
     }
     
     // MARK: Login View
@@ -75,27 +82,19 @@ extension CustomLoginView {
     var phoneTextfieldView: some View {
         VStack {
             VStack(alignment: .leading) {
-                
-                Text(phoneTitle)
-                    .foregroundColor(self.phoneTitleColor ?? (
-                        self.colorScheme == .light
-                        ? .black
-                        : .white
-                    ))
-                    .font(self.phoneTitleFont ?? .body)
                 CustomTextField(
                     placeholder: "987654321",
                     text: self.$phone,
                     isSecureField: false,
-                    borderWidth: self.phoneTextFieldBorderWidth ?? 1,
-                    borderColor: self.phoneErrorText.isEmpty
-                    ? self.phoneTextFieldBorderColor ?? (
-                        self.colorScheme == .light
-                        ? .black
-                        : .white
-                    )
-                    : .red,
-                    cornerRadius: self.phoneTextFieldCornerRadius ?? 8,
+                    title: self.$phoneTitle,
+                    titleColor: self.$textfieldTitleColor,
+                    titleFont: self.$textfieldTitleFont,
+                    textColor: self.$textfieldTextColor,
+                    textFont: self.$textfieldTextFont,
+                    errorText: self.$phoneErrorText,
+                    borderWidth: self.$textfieldBorderWidth,
+                    borderColor: self.$textfieldBorderColor,
+                    cornerRadius: self.$textfieldCornerRadius,
                     keyboardType: .phonePad)
                 .focused(self.$phoneNumberFieldFocused)
                 .font(self.phoneTextFont ?? .body)
@@ -129,11 +128,6 @@ extension CustomLoginView {
                     }
                 }
                 .textContentType(.telephoneNumber)
-                Text(self.phoneErrorText)
-                    .foregroundColor(.red)
-                    .font(.caption)
-                    .padding(.top, -5)
-                    .padding(.leading, 20)
             }
         }
     }
@@ -156,28 +150,19 @@ extension CustomLoginView {
     // MARK: UserIdTextField View
     var userIdView: some View {
         VStack(alignment: .leading) {
-            
-            Text(userIdTitle)
-                .foregroundColor(self.userIdTitleColor ?? (
-                    self.colorScheme == .light
-                    ? .black
-                    : .white
-                ))
-                .font(self.userIdTitleFont ?? .body)
-//                    .fontWeight(self.userIdTitleFontWeight ?? .medium)
             CustomTextField(
                 placeholder: "test@example.com",
                 text: self.$userId,
                 isSecureField: false,
-                borderWidth: self.userIdTextFieldBorderWidth ?? 1,
-                borderColor: self.userIdErrorText.isEmpty
-                ? self.phoneTextFieldBorderColor ?? (
-                    self.colorScheme == .light
-                    ? .black
-                    : .white
-                )
-                : .red,
-                cornerRadius: self.userIdTextFieldCornerRadius ?? 8,
+                title: self.$userIdTitle,
+                titleColor: self.$textfieldTitleColor,
+                titleFont: self.$textfieldTitleFont,
+                textColor: self.$textfieldTextColor,
+                textFont: self.$textfieldTextFont,
+                errorText: self.$userIdErrorText,
+                borderWidth: self.$textfieldBorderWidth,
+                borderColor: self.$textfieldBorderColor,
+                cornerRadius: self.$textfieldCornerRadius,
                 keyboardType: .emailAddress)
             //            .textContentType(.emailAddress)
             .font(self.userIdTextFont ?? .body)
@@ -190,42 +175,26 @@ extension CustomLoginView {
                 : "Invalid Email"
                 self.enableLoginButton()
             }
-            
-            Text(self.userIdErrorText)
-                .foregroundColor(.red)
-                .font(.caption)
-                .padding(.top, -5)
-                .padding(.leading, 20)
         }
     }
     
     // MARK: Password TextField View
     var passwordView: some View {
         VStack(alignment: .leading) {
-            
-            Text(passwordTitle)
-                .foregroundColor(self.passwordTitleColor ?? (
-                    self.colorScheme == .light
-                    ? .black
-                    : .white
-                ))
-                .font(self.passwordTitleFont ?? .body)
-//                    .fontWeight(self.passwordTextFontWeight ?? .medium)
             CustomTextField(
                 placeholder: "************",
                 text: self.$password,
                 isSecureField: true,
-                borderWidth: self.passwordTextFieldBorderWidth ?? 1,
-                borderColor: self.passwordErrorText.isEmpty
-                ? self.phoneTextFieldBorderColor ?? (
-                    self.colorScheme == .light
-                    ? .black
-                    : .white
-                )
-                : .red,
-                cornerRadius: self.passwordTextFieldCornerRadius ?? 8,
+                title: self.$passwordTitle,
+                titleColor: self.$textfieldTitleColor,
+                titleFont: self.$textfieldTitleFont,
+                textColor: self.$textfieldTextColor,
+                textFont: self.$textfieldTextFont,
+                errorText: self.$passwordErrorText,
+                borderWidth: self.$textfieldBorderWidth,
+                borderColor: self.$textfieldBorderColor,
+                cornerRadius: self.$textfieldCornerRadius,
                 keyboardType: .default)
-//            .textContentType(<#T##UIKit.UITextContentType?#>)
             .onChange(of: self.password) { newValue in
                 self.viewModel.password = newValue
                 self.passwordErrorText = Validation.isValid(password: newValue)
@@ -337,6 +306,13 @@ struct CustomLoginViewComponents_Previews: PreviewProvider {
             userIdPlaceholder: "test@example.com",
             passwordTitle: "Password",
             phoneTitle: "Phone",
+            textfieldTitleColor: .constant(.black),
+            textfieldTitleFont: .constant(.body),
+            textfieldBorderWidth: .constant(2),
+            textfieldBorderColor: .constant(.black),
+            textfieldCornerRadius: .constant(8),
+            textfieldTextFont: .constant(.body),
+            textfieldTextColor: .constant(.black),
             userId: .constant(""),
             password: .constant(""),
             phone: .constant(""))

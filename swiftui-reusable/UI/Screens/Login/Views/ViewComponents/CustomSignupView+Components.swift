@@ -25,44 +25,27 @@ extension CustomSignupView {
             
             ForEach(0..<self.viewModel.signupInputFields.count, id: \.self) { index in
                 let field = self.viewModel.signupInputFields[index]
-                
-                Text(field.defaultTitle)
-                    .foregroundColor(
-                        self.titleColor ?? (
-                            self.colorScheme == .light
-                            ? field.defaultTitleColorLight
-                            : field.defaultTitleColorDark)
-                    )
-                    .font(self.titleFont ?? field.defaultTitleFont)
-                    .padding(.horizontal, 20)
-                
                 CustomTextField(
                     placeholder: field.defaultPlaceholder,
                     text: self.binder(forField: field),
                     isSecureField: field.isSecureField,
-                    borderWidth: self.textfieldBorderWidth ?? field.defaultBorderWidth,
-                    borderColor: self.fieldErrorText(inField: field).isEmpty
-                    ? self.textfieldBorderColor ?? (
-                        self.colorScheme == .light
-                        ? field.defaultTitleColorLight
-                        : field.defaultTitleColorDark
-                    )
-                    : .red,
-                    cornerRadius: self.textfieldCornerRadius ?? field.defaultCornerRadius,
+                    title: .constant(field.defaultTitle),
+                    titleColor: self.$textfieldTitleColor,
+                    titleFont: self.$textfieldTextFont,
+                    textColor: self.$textfieldTextColor,
+                    textFont: self.$textfieldTextFont,
+                    errorText: fieldErrorTextBinder(inField: field),
+                    borderWidth: self.$textfieldBorderWidth,
+                    borderColor: self.$textfieldBorderColor,
+                    cornerRadius: self.$textfieldCornerRadius,
                     keyboardType: field.keyboardType,
                     onEditingChanged: {changed in if changed { self.kGuardian.showField = index } })
                 .background(GeometryGetter(rect: $kGuardian.rects[index]))
                 .focused($focusedField, equals: field)
-                .font(self.textFont ?? field.defaultTextFont)
+                .font(self.textfieldTitleFont)
                 .autocorrectionDisabled()
                 .textContentType(field.textContentType)
                 .padding(.horizontal, 20)
-                Text(self.fieldErrorText(inField: field))
-                    .foregroundColor(.red)
-                    .font(.caption)
-                    .padding(.top, -5)
-                    .padding(.leading, 20)
-                    .padding(.horizontal, 20)
             }
         }
         .onChange(of: self.name) { newValue in
@@ -179,6 +162,13 @@ extension CustomSignupView {
 struct CustomSignupView_Components_Previews: PreviewProvider {
     static var previews: some View {
         CustomSignupView(
-            viewModel: CustomLoginViewModel())
+            viewModel: CustomLoginViewModel(),
+            textfieldTitleFont: .constant(.body),
+            textfieldTitleColor: .constant(.black),
+            textfieldBorderWidth: .constant(2),
+            textfieldBorderColor: .constant(.black),
+            textfieldCornerRadius: .constant(8),
+            textfieldTextFont: .constant(.body),
+            textfieldTextColor: .constant(.black))
     }
 }

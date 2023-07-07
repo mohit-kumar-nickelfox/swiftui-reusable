@@ -12,27 +12,24 @@ extension CustomSignupView {
     var nameTextfieldView: some View {
         VStack {
             VStack(alignment: .leading) {
-                
-                Text("Name")
-                    .foregroundColor(self.titleColor ?? (self.colorScheme == .light ? .black : .white))
-                    .font(self.titleFont ?? .body)
                 CustomTextField(
                     placeholder: "John Doe",
                     text: self.$name,
                     isSecureField: false,
-                    borderWidth: self.textfieldBorderWidth ?? 1,
-                    borderColor: self.phoneErrorText.isEmpty
-                    ? self.textfieldBorderColor ?? (
-                        self.colorScheme == .light
-                        ? .black :
-                                .white)
-                    : .red,
-                    cornerRadius: self.textfieldCornerRadius ?? 8,
+                    title: .constant("Name"),
+                    titleColor: self.$textfieldTitleColor,
+                    titleFont: self.$textfieldTitleFont,
+                    textColor: self.$textfieldTextColor,
+                    textFont: self.$textfieldTextFont,
+                    errorText: self.$nameErrorText,
+                    borderWidth: self.$textfieldBorderWidth,
+                    borderColor: self.$textfieldBorderColor,
+                    cornerRadius: self.$textfieldCornerRadius,
                     keyboardType: .namePhonePad,
                     onEditingChanged: {if $0 { self.kGuardian.showField = 0 } })
                 .background(GeometryGetter(rect: $kGuardian.rects[0]))
                 .focused($focusedField, equals: .name)
-                .font(self.textFont ?? .body)
+                .font(self.textfieldTextFont)
                 .autocorrectionDisabled()
                 .onChange(of: self.name) { newValue in
                     self.viewModel.signupName = newValue
@@ -42,11 +39,6 @@ extension CustomSignupView {
                     self.signupButtonDisabled = newValue.isEmpty
                 }
                 .textContentType(.name)
-                Text(self.nameErrorText)
-                    .foregroundColor(.red)
-                    .font(.caption)
-                    .padding(.top, -5)
-                    .padding(.leading, 20)
             }
         }
     }
@@ -55,25 +47,25 @@ extension CustomSignupView {
     var phoneTextfieldView: some View {
         VStack {
             VStack(alignment: .leading) {
-                
-                Text("Phone")
-                    .foregroundColor(self.titleColor ?? (self.colorScheme == .light ? .black : .white))
-                    .font(self.titleFont ?? .body)
                 CustomTextField(
                     placeholder: "987654321",
                     text: self.$phone,
                     isSecureField: false,
-                    borderWidth: self.textfieldBorderWidth ?? 1,
-                    borderColor: self.emailErrorText.isEmpty
-                    ? self.textfieldBorderColor ?? (self.colorScheme == .light ? .black : .white)
-                    : .red,
-                    cornerRadius: self.textfieldCornerRadius ?? 8,
+                    title: .constant("Phone"),
+                    titleColor: self.$textfieldTitleColor,
+                    titleFont: self.$textfieldTitleFont,
+                    textColor: self.$textfieldTextColor,
+                    textFont: self.$textfieldTextFont,
+                    errorText: self.$nameErrorText,
+                    borderWidth: self.$textfieldBorderWidth,
+                    borderColor: self.$textfieldBorderColor,
+                    cornerRadius: self.$textfieldCornerRadius,
                     keyboardType: .phonePad,
                     onEditingChanged: { if $0 { self.kGuardian.showField = 1 } })
                 .background(GeometryGetter(rect: $kGuardian.rects[1]))
                 .textContentType(.telephoneNumber)
                 .focused($focusedField, equals: .phone)
-                .font(self.textFont ?? .body)
+                .font(self.textfieldTextFont)
                 .autocorrectionDisabled()
                 .onChange(of: self.phone) { newValue in
                     self.viewModel.signupPhone = newValue
@@ -84,12 +76,6 @@ extension CustomSignupView {
                     
                     
                 }
-                
-                Text(self.phoneErrorText)
-                    .foregroundColor(.red)
-                    .font(.caption)
-                    .padding(.top, -5)
-                    .padding(.leading, 20)
             }
         }
     }
@@ -98,24 +84,24 @@ extension CustomSignupView {
     var emailTextfieldView: some View {
         VStack {
             VStack(alignment: .leading) {
-                
-                Text("Email")
-                    .foregroundColor(self.titleColor ?? (self.colorScheme == .light ? .black : .white))
-                    .font(self.titleFont ?? .body)
                 CustomTextField(
                     placeholder: "test@example.com",
                     text: self.$email,
                     isSecureField: false,
-                    borderWidth: self.textfieldBorderWidth ?? 1,
-                    borderColor: self.phoneErrorText.isEmpty
-                    ? self.textfieldBorderColor ?? (self.colorScheme == .light ? .black : .white)
-                    : .red,
-                    cornerRadius: self.textfieldCornerRadius ?? 8,
+                    title: .constant("Email"),
+                    titleColor: self.$textfieldTitleColor,
+                    titleFont: self.$textfieldTitleFont,
+                    textColor: self.$textfieldTextColor,
+                    textFont: self.$textfieldTextFont,
+                    errorText: self.$nameErrorText,
+                    borderWidth: self.$textfieldBorderWidth,
+                    borderColor: self.$textfieldBorderColor,
+                    cornerRadius: self.$textfieldCornerRadius,
                     keyboardType: .emailAddress,
                     onEditingChanged: { if $0 { self.kGuardian.showField = 2 } })
                 .background(GeometryGetter(rect: $kGuardian.rects[2]))
                 .focused($focusedField, equals: .email)
-                .font(self.textFont ?? .body)
+                .font(self.textfieldTextFont)
                 .autocorrectionDisabled()
                 .onChange(of: self.email) { newValue in
                     self.viewModel.signupEmail = newValue
@@ -128,12 +114,6 @@ extension CustomSignupView {
                     
                     
                 }
-                .textContentType(.emailAddress)
-                Text(self.emailErrorText)
-                    .foregroundColor(.red)
-                    .font(.caption)
-                    .padding(.top, -5)
-                    .padding(.leading, 20)
             }
         }
     }
@@ -141,19 +121,19 @@ extension CustomSignupView {
     // MARK: Password TextField
     var passwordView: some View {
         VStack(alignment: .leading) {
-            
-            Text("Password")
-                .foregroundColor(self.titleColor ?? (self.colorScheme == .light ? .black : .white))
-                .font(self.titleFont ?? .body)
             CustomTextField(
                 placeholder: "************",
                 text: self.$password,
                 isSecureField: true,
-                borderWidth: self.textfieldBorderWidth ?? 1,
-                borderColor: self.passwordErrorText.isEmpty
-                ? self.textfieldBorderColor ?? (self.colorScheme == .light ? .black : .white)
-                : .red,
-                cornerRadius: self.textfieldCornerRadius ?? 8,
+                title: .constant("Password"),
+                titleColor: self.$textfieldTitleColor,
+                titleFont: self.$textfieldTitleFont,
+                textColor: self.$textfieldTextColor,
+                textFont: self.$textfieldTextFont,
+                errorText: self.$nameErrorText,
+                borderWidth: self.$textfieldBorderWidth,
+                borderColor: self.$textfieldBorderColor,
+                cornerRadius: self.$textfieldCornerRadius,
                 keyboardType: .emailAddress,
                 onEditingChanged: { if $0 { self.kGuardian.showField = 3 } })
             .background(GeometryGetter(rect: $kGuardian.rects[3]))
@@ -165,12 +145,7 @@ extension CustomSignupView {
                 ? ""
                 : "Invalid Password"
             }
-            
             .autocorrectionDisabled()
-            Text(self.passwordErrorText)
-                .foregroundColor(.red)
-                .font(.caption)
-                .padding(.top, -5)
         }
     }
 }

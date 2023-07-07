@@ -50,16 +50,22 @@ extension CustomEditorView {
                             ForEach(self.viewModel.selectedScreen.components, id: \.self) { component in
                                 VStack {
                                     Button {
-                                        // TODO: Add action for component tap
+                                        self.openEditor(for: component)
                                     } label: {
                                         Text(component.rawValue)
                                             .font(.caption)
-                                            .foregroundColor(.white)
+                                            .foregroundColor(
+                                                colorScheme == .light
+                                                ? .black
+                                                : .white
+                                            )
                                             .padding(5)
                                             
                                     }
                                 }
-                                .background(Color.black.opacity(0.15))
+                                .background(
+                                    self.backgroundColor(forComponent: component)
+                                )
                                 .cornerRadius(4)
                             }
                         }.padding(.horizontal, 20)
@@ -77,6 +83,37 @@ extension CustomEditorView {
         .offset(CGSize(
             width: 0.0,
             height: showEditor ? 0.0 : -204))
+    }
+    
+    func backgroundColor(forComponent component: CustomComponents) -> Color {
+        
+        if self.viewModel.selectedComponent == component {
+            return colorScheme == .light ? Color.white.opacity(1.0) : Color.black.opacity(0.4)
+        } else {
+            return colorScheme == .light ? Color.white.opacity(0.25) : Color.black.opacity(0.14)
+        }
+    }
+    
+    func openEditor(for type: CustomComponents) {
+        switch type {
+        case .segment:
+            ()
+        case .userIdField, .passwordField:
+            withAnimation {
+                self.openTextFieldEditor.toggle()
+            }
+            
+        case .loginButton:
+            ()
+        case .signupText:
+            ()
+        case .signupButtton:
+            ()
+        case .forgotPasswordButton:
+            ()
+        case .none:
+            ()
+        }
     }
     
     // MARK: Editor Button

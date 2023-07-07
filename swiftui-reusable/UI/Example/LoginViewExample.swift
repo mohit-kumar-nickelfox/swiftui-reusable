@@ -33,6 +33,13 @@ struct LoginViewExample: View {
             userIdPlaceholder: "test@example.com",
             passwordTitle: "Password",
             phoneTitle: "Phone",
+            textfieldTitleColor: .constant(.black),
+            textfieldTitleFont: .constant(.body),
+            textfieldBorderWidth: .constant(2),
+            textfieldBorderColor: .constant(.black),
+            textfieldCornerRadius: .constant(8),
+            textfieldTextFont: .constant(.body),
+            textfieldTextColor: .constant(.black),
             userId: self.$userId,
             password: self.$password,
             phone: self.$phone)

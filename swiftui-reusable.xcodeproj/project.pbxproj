@@ -38,6 +38,7 @@
 		E689D3402A5708E20077C37D /* CustomScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D33F2A5708E20077C37D /* CustomScreen.swift */; };
 		E689D3422A5709070077C37D /* CustomComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3412A5709070077C37D /* CustomComponents.swift */; };
 		E689D3452A57D15C0077C37D /* CustomLoaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3442A57D15C0077C37D /* CustomLoaderType.swift */; };
+		E689D3472A5815780077C37D /* TextfieldEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3462A5815780077C37D /* TextfieldEditorView.swift */; };
 		E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */; };
 		E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3C2A4D523900EA0031 /* ContentView.swift */; };
 		E6E5CB3F2A4D523A00EA0031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5CB3E2A4D523A00EA0031 /* Assets.xcassets */; };
@@ -101,6 +102,7 @@
 		E689D33F2A5708E20077C37D /* CustomScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScreen.swift; sourceTree = "<group>"; };
 		E689D3412A5709070077C37D /* CustomComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComponents.swift; sourceTree = "<group>"; };
 		E689D3442A57D15C0077C37D /* CustomLoaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoaderType.swift; sourceTree = "<group>"; };
+		E689D3462A5815780077C37D /* TextfieldEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldEditorView.swift; sourceTree = "<group>"; };
 		E6E5CB372A4D523900EA0031 /* swiftui-reusable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-reusable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_reusableApp.swift; sourceTree = "<group>"; };
 		E6E5CB3C2A4D523900EA0031 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				E689D3212A56B2860077C37D /* CustomEditorView.swift */,
 				E689D3242A56C85B0077C37D /* CustomEditorViewModel.swift */,
 				E689D3262A56C9130077C37D /* CustomEditorView+Components.swift */,
+				E689D3462A5815780077C37D /* TextfieldEditorView.swift */,
 			);
 			path = MainEditor;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */,
 				E689D3402A5708E20077C37D /* CustomScreen.swift in Sources */,
 				E689D3422A5709070077C37D /* CustomComponents.swift in Sources */,
+				E689D3472A5815780077C37D /* TextfieldEditorView.swift in Sources */,
 				E689D3222A56B2860077C37D /* CustomEditorView.swift in Sources */,
 				E689D3252A56C85B0077C37D /* CustomEditorViewModel.swift in Sources */,
 				E6E5CB6F2A4D73A700EA0031 /* TextfieldModifiers.swift in Sources */,

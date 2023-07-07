@@ -28,7 +28,7 @@ public struct CustomLoginView: View {
     // UserId vars
     
     /// User Id Textfiled title
-    public var userIdTitle: String
+    @State public var userIdTitle: String
     
     @State var userIdTitleColor: Color?
     
@@ -48,7 +48,7 @@ public struct CustomLoginView: View {
     // Password vars
     
     /// Password Textfiled title
-    public var passwordTitle: String
+    @State public var passwordTitle: String
     
     @State var passwordTitleColor: Color?
     
@@ -68,7 +68,21 @@ public struct CustomLoginView: View {
     // Phone vars
     
     /// PhoneTextfiled title
-    public var phoneTitle: String
+    @State var phoneTitle: String
+    
+    @Binding var textfieldTitleColor: Color
+    
+    @Binding var textfieldTitleFont: Font
+    
+    @Binding var textfieldBorderWidth: Double
+    
+    @Binding var textfieldBorderColor: Color
+    
+    @Binding var textfieldCornerRadius: Double
+    
+    @Binding var textfieldTextFont: Font
+    
+    @Binding var textfieldTextColor: Color
     
     @State var phoneTitleColor: Color?
     
@@ -219,6 +233,13 @@ struct CustomLoginView_Previews: PreviewProvider {
             userIdPlaceholder: "test@example.com",
             passwordTitle: "Password",
             phoneTitle: "Phone",
+            textfieldTitleColor: .constant(.black),
+            textfieldTitleFont: .constant(.body),
+            textfieldBorderWidth: .constant(2),
+            textfieldBorderColor: .constant(.black),
+            textfieldCornerRadius: .constant(8),
+            textfieldTextFont: .constant(.body),
+            textfieldTextColor: .constant(.black),
             userId: .constant(""),
             password: .constant(""),
             phone: .constant(""))

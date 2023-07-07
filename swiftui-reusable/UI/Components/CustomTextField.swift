@@ -18,14 +18,26 @@ public struct CustomTextField: View {
     
     public var isSecureField: Bool
     
+    @Binding public var title: String
+    
+    @Binding public var titleColor: Color
+    
+    @Binding public var titleFont: Font
+    
+    @Binding public var textColor: Color
+    
+    @Binding public var textFont: Font
+    
+    @Binding public var errorText: String
+    
     /// TextField Border width
-    public var borderWidth: Double? = nil
+    @Binding public var borderWidth: Double
     
     /// TextField Border color
-    public var borderColor: Color? = nil
+    @Binding public var borderColor: Color
     
     /// TextField corner radius
-    public var cornerRadius: Double? = nil
+    @Binding public var cornerRadius: Double
     
     /// Keyboard Type
     public var keyboardType: UIKeyboardType?
@@ -33,47 +45,64 @@ public struct CustomTextField: View {
     var onEditingChanged: ((_ changed: Bool)->())?
     
     public var body: some View {
-        
-        
-        if isSecureField {
-            SecureField(
-                placeholder,
-                text: self.$text)
-            .padding()
-            .overlay(
-                RoundedRectangle(
-                    cornerRadius: cornerRadius ?? 0
+        VStack(alignment: .leading) {
+            Text(title)
+                .foregroundColor(self.titleColor)
+                .font(self.titleFont)
+            
+            
+            if isSecureField {
+                SecureField(
+                    placeholder,
+                    text: self.$text)
+                .foregroundColor(self.textColor)
+                .font(textFont)
+                .padding()
+                .overlay(
+                    RoundedRectangle(
+                        cornerRadius: cornerRadius
+                    )
+                    .stroke(
+                        borderColor,
+                        lineWidth: borderWidth
+                    )
                 )
-                .stroke(
-                    borderColor ?? (self.colorScheme == .light ? .black : .white),
-                    lineWidth: borderWidth ?? 0
+                .textContentType(.password)
+                .keyboardType(self.keyboardType ?? .default)
+                .onTapGesture {
+                    (self.onEditingChanged ?? {_ in})(true)
+                }
+            } else {
+                TextField(
+                    placeholder,
+                    text: self.$text,
+                    onEditingChanged: { changed in
+                        
+                        (self.onEditingChanged ?? {_ in})(changed)
+                    })
+                .foregroundColor(self.textColor)
+                .font(textFont)
+                .padding()
+                .overlay(
+                    RoundedRectangle(
+                        cornerRadius: cornerRadius
+                    )
+                    .stroke(
+                        borderColor,
+                        lineWidth: borderWidth
+                    )
                 )
-            )
-            .textContentType(.password)
-            .keyboardType(self.keyboardType ?? .default)
-            .onTapGesture {
-                (self.onEditingChanged ?? {_ in})(true)
+                .keyboardType(self.keyboardType ?? .default)
             }
-        } else {
-            TextField(
-                placeholder,
-                text: self.$text,
-                onEditingChanged: { changed in
-                    
-                    (self.onEditingChanged ?? {_ in})(changed)
-                })
-            .padding()
-            .overlay(
-                RoundedRectangle(
-                    cornerRadius: cornerRadius ?? 0
-                )
-                .stroke(
-                    borderColor ?? .black,
-                    lineWidth: borderWidth ?? 0
-                )
-            )
-            .keyboardType(self.keyboardType ?? .default)
+            
+            Text(self.errorText)
+                .foregroundColor(.red)
+                .font(.caption)
+                .padding(.top, -5)
+                .padding(.leading, 20)
         }
+        
+        
         
     }
 }
@@ -84,8 +113,14 @@ struct TextField_Previews: PreviewProvider {
             placeholder: "Input Text",
             text: .constant("Test String"),
             isSecureField: true,
-            borderWidth: 5,
-            borderColor: .blue,
-            cornerRadius: 22)
+            title: .constant("Title"),
+            titleColor: .constant(.gray),
+            titleFont: .constant(.body),
+            textColor: .constant(.black),
+            textFont: .constant(.body),
+            errorText: .constant(""),
+            borderWidth: .constant(5),
+            borderColor: .constant(.blue),
+            cornerRadius: .constant(22))
     }
 }

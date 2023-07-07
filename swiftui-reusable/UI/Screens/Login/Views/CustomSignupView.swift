@@ -19,12 +19,13 @@ public struct CustomSignupView: View {
     @State var name: String = ""
     @State var password: String = ""
     
-    @State var titleFont: Font?
-    @State var titleColor: Color?
-    @State var textfieldBorderWidth: Double?
-    @State var textfieldBorderColor: Color?
-    @State var textfieldCornerRadius: Double?
-    @State var textFont: Font?
+    @Binding var textfieldTitleFont: Font
+    @Binding var textfieldTitleColor: Color
+    @Binding var textfieldBorderWidth: Double
+    @Binding var textfieldBorderColor: Color
+    @Binding var textfieldCornerRadius: Double
+    @Binding var textfieldTextFont: Font
+    @Binding var textfieldTextColor: Color
     
     // Button disable var
     @State var signupButtonDisabled: Bool = true
@@ -90,6 +91,19 @@ extension CustomSignupView {
             return self.emailErrorText
         case .password:
             return self.passwordErrorText
+        }
+    }
+    
+    func fieldErrorTextBinder(inField field: CustomSignupFieldType) -> Binding<String> {
+        switch field {
+        case .name:
+            return self.$nameErrorText
+        case .phone:
+            return self.$phoneErrorText
+        case .email:
+            return self.$emailErrorText
+        case .password:
+            return self.$passwordErrorText
         }
     }
     
@@ -164,7 +178,14 @@ extension CustomSignupView {
 struct CustomSignupView_Previews: PreviewProvider {
     static var previews: some View {
         CustomSignupView(
-            viewModel: CustomLoginViewModel())
+            viewModel: CustomLoginViewModel(),
+            textfieldTitleFont: .constant(.body),
+            textfieldTitleColor: .constant(.black),
+            textfieldBorderWidth: .constant(2),
+            textfieldBorderColor: .constant(.black),
+            textfieldCornerRadius: .constant(2),
+            textfieldTextFont: .constant(.body),
+            textfieldTextColor: .constant(.black))
     }
 }
 
