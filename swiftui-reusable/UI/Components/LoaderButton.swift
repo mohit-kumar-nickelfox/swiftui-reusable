@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct LoaderButton: View {
+public struct LoaderButton: View {
     @State var animateLoader = false
-    @Binding var isAnimating: Bool
-    @Binding var loaderType: CustomLoaderType
+    @Binding public var isAnimating: Bool
+    @Binding public var loaderType: CustomLoaderType
     
     /// Button action callback
     public var action: (() -> Void)
@@ -31,7 +31,7 @@ struct LoaderButton: View {
     
     /// Corner Radius
     public var cornerRadius: Double?
-    var body: some View {
+    public var body: some View {
         
         Button {
             self.action()

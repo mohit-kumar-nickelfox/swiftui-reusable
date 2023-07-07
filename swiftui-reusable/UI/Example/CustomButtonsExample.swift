@@ -185,6 +185,9 @@ struct CustomButtonsExample: View {
                          borderColor: .yellow,
                          cornerRadius: 8)
             .foregroundColor(.black)
+            .transaction { transaction in
+                transaction.animation = .easeIn(duration: 0.001)
+            }
         }
     }
 }

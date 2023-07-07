@@ -14,7 +14,7 @@ public enum CustomSignupFieldType: String {
     case email = "email"
     case password = "password"
     
-    var defaultTitle: String {
+    public var defaultTitle: String {
         switch self {
         case .name:
             return "Name"
@@ -27,19 +27,19 @@ public enum CustomSignupFieldType: String {
         }
     }
     
-    var defaultTitleColorLight: Color {
+    public var defaultTitleColorLight: Color {
         return .black
     }
     
-    var defaultTitleColorDark: Color {
+    public var defaultTitleColorDark: Color {
         return .white
     }
     
-    var defaultTitleFont: Font {
+    public var defaultTitleFont: Font {
         return .body
     }
     
-    var defaultPlaceholder: String {
+    public var defaultPlaceholder: String {
         switch self {
         case .name:
             return "Enter your name"
@@ -52,34 +52,34 @@ public enum CustomSignupFieldType: String {
         }
     }
     
-    var defaultTextFont: Font {
+    public var defaultTextFont: Font {
         return .body
     }
     
-    var isSecureField: Bool {
+    public var isSecureField: Bool {
         switch self {
         case .name, .email, .phone: return false
         case .password: return true
         }
     }
     
-    var defaultBorderWidth: Double {
+    public var defaultBorderWidth: Double {
         return 1
     }
     
-    var defaultBorderColorLight: Color {
+    public var defaultBorderColorLight: Color {
         return .black
     }
     
-    var defaultBorderColorDark: Color {
+    public var defaultBorderColorDark: Color {
         return .white
     }
     
-    var defaultCornerRadius: Double {
+    public var defaultCornerRadius: Double {
         return 8
     }
     
-    var keyboardType: UIKeyboardType {
+    public var keyboardType: UIKeyboardType {
         switch self {
         case .name:
             return .namePhonePad
@@ -90,7 +90,7 @@ public enum CustomSignupFieldType: String {
         }
     }
     
-    var textContentType: UITextContentType {
+    public var textContentType: UITextContentType {
         switch self {
         case .name:
             return .name

@@ -37,6 +37,7 @@
 		E689D33D2A57088D0077C37D /* CustomSignupFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D33C2A57088D0077C37D /* CustomSignupFieldType.swift */; };
 		E689D3402A5708E20077C37D /* CustomScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D33F2A5708E20077C37D /* CustomScreen.swift */; };
 		E689D3422A5709070077C37D /* CustomComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3412A5709070077C37D /* CustomComponents.swift */; };
+		E689D3452A57D15C0077C37D /* CustomLoaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D3442A57D15C0077C37D /* CustomLoaderType.swift */; };
 		E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */; };
 		E6E5CB3D2A4D523900EA0031 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5CB3C2A4D523900EA0031 /* ContentView.swift */; };
 		E6E5CB3F2A4D523A00EA0031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6E5CB3E2A4D523A00EA0031 /* Assets.xcassets */; };
@@ -99,6 +100,7 @@
 		E689D33C2A57088D0077C37D /* CustomSignupFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSignupFieldType.swift; sourceTree = "<group>"; };
 		E689D33F2A5708E20077C37D /* CustomScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScreen.swift; sourceTree = "<group>"; };
 		E689D3412A5709070077C37D /* CustomComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComponents.swift; sourceTree = "<group>"; };
+		E689D3442A57D15C0077C37D /* CustomLoaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoaderType.swift; sourceTree = "<group>"; };
 		E6E5CB372A4D523900EA0031 /* swiftui-reusable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftui-reusable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E5CB3A2A4D523900EA0031 /* swiftui_reusableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftui_reusableApp.swift; sourceTree = "<group>"; };
 		E6E5CB3C2A4D523900EA0031 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,14 @@
 			path = EditorHelpers;
 			sourceTree = "<group>";
 		};
+		E689D3432A57D1490077C37D /* ComponentsHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				E689D3442A57D15C0077C37D /* CustomLoaderType.swift */,
+			);
+			path = ComponentsHelpers;
+			sourceTree = "<group>";
+		};
 		E6E5CB2E2A4D523900EA0031 = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +340,7 @@
 		E6E5CB652A4D554800EA0031 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E689D3432A57D1490077C37D /* ComponentsHelpers */,
 				E689D3282A56D9B80077C37D /* Loaders */,
 				E6E5CB672A4D55BF00EA0031 /* CustomTextField.swift */,
 				E6E5CB6B2A4D61AD00EA0031 /* CustomButton.swift */,
@@ -505,6 +516,7 @@
 				E6E5CB6F2A4D73A700EA0031 /* TextfieldModifiers.swift in Sources */,
 				E689D3112A5570490077C37D /* CustomSignupView.swift in Sources */,
 				E649F2CD2A5456DD00D5630E /* ParentView.swift in Sources */,
+				E689D3452A57D15C0077C37D /* CustomLoaderType.swift in Sources */,
 				E689D3322A56DBA70077C37D /* Blinking.swift in Sources */,
 				E6E5CB682A4D55BF00EA0031 /* CustomTextField.swift in Sources */,
 				E6E5CB712A4D9D7B00EA0031 /* Vaildation.swift in Sources */,

@@ -179,103 +179,103 @@ extension CustomLoginViewUIProtocol {
     
     /// Color for UserId Heading
     /// - Returns: SwiftUI Color
-    func headingTextColorForUserIdTextfield() -> Color {
+    public func headingTextColorForUserIdTextfield() -> Color {
         return .black
     }
     
     /// Corner Radius for UserId Textfield
     /// - Returns: Corner Radius
-    func cornerRadiusForUserIdTextfield() -> Double {
+    public func cornerRadiusForUserIdTextfield() -> Double {
         return 10
     }
     
     /// Input Text Font for UserId Textfield
     /// - Returns: Font
-    func inputTextFontForUserIdTextfield() -> Font {
+    public func inputTextFontForUserIdTextfield() -> Font {
         return .body
     }
     
     /// Font for UserId Heading
     /// - Returns: SwiftUI Font
-    func headingTextFontForUserIdTextfield() -> Font {
+    public func headingTextFontForUserIdTextfield() -> Font {
         return .subheadline
     }
     
     /// Font for Password Heading
     /// - Returns: SwiftUI Font
-    func headingFontForPasswordTextfield() -> Font {
+    public func headingFontForPasswordTextfield() -> Font {
         return .subheadline
     }
     
     /// Corner Radius for Password Textfield
     /// - Returns: Corner Radius
-    func cornerRadiusForPasswordTextfield() -> Double {
+    public func cornerRadiusForPasswordTextfield() -> Double {
         return 10
     }
     
     /// Input Text Font for Password Textfield
     /// - Returns: Font
-    func inputTextFontForPasswordTextfield() -> Font {
+    public func inputTextFontForPasswordTextfield() -> Font {
         return .body
     }
     
     /// Border Width for UserId Textfield
     /// - Returns: Border Width
-    func borderWidthForUserIdTextfield() -> Double {
+    public func borderWidthForUserIdTextfield() -> Double {
         return 1
     }
     
     /// Title Font for Forgot Password Button
     /// - Returns: Font
-    func titleFontForForgotPasswordButton() -> Font {
+    public func titleFontForForgotPasswordButton() -> Font {
         return .caption
     }
     
     /// Border Width for Password Textfield
     /// - Returns: Border Width
-    func borderWidthForPasswordTextfield() -> Double {
+    public func borderWidthForPasswordTextfield() -> Double {
         return 1
     }
     
     /// Font for Phone Textfield
     /// - Returns: SwiftUI Font
-    func headingTextFontForPhoneTextfield() -> Font {
+    public func headingTextFontForPhoneTextfield() -> Font {
         return .subheadline
     }
     
     /// Border Width for Phone Textfield
     /// - Returns: Border Width
-    func borderWidthForPhoneTextfield() -> Double {
+    public func borderWidthForPhoneTextfield() -> Double {
         return 1
     }
     
     /// Corner Radius for Phone Textfield
     /// - Returns: Corner Radius
-    func cornerRadiusForPhoneTextfield() -> Double {
+    public func cornerRadiusForPhoneTextfield() -> Double {
         return 10
     }
     
     /// Input Text Font for Phone Textfield
     /// - Returns: Font
-    func inputTextFontForPhoneTextfield() -> Font {
+    public func inputTextFontForPhoneTextfield() -> Font {
         return .body
     }
     
     /// Title Font for Login Button
     /// - Returns: Font
-    func titleFontForLoginButton() -> Font {
+    public func titleFontForLoginButton() -> Font {
         return .subheadline
     }
     
     /// Border Width for Login Button
     /// - Returns: Border Width
-    func borderWidthForLoginButton() -> Double {
+    public func borderWidthForLoginButton() -> Double {
         return 0
     }
     
     /// Border Color for Login Button
     /// - Returns: Border Color
-    func borderColorForLoginButton() -> Color {
+    public func borderColorForLoginButton() -> Color {
         return .white
     }
 }

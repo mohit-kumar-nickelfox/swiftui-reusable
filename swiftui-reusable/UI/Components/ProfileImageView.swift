@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileImageView: View {
+public struct ProfileImageView: View {
     
     var didSelectImage: (_ image: UIImage)->Void
     
@@ -22,7 +22,7 @@ struct ProfileImageView: View {
     @State private var openCamera = false
     @State private var openGallery = false
     
-    var body: some View {
+    public var body: some View {
         Button {
             showConfirmationDialogue = true
         } label: {

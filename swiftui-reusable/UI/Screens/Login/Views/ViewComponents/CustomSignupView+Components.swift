@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum ActiveSignupTextfield {
+public enum ActiveSignupTextfield {
     case name, phone, email, password, none
 }
 

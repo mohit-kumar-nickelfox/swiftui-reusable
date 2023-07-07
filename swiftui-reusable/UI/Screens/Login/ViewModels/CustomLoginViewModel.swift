@@ -9,7 +9,7 @@ import SwiftUI
 
 class CustomLoginViewModel: ObservableObject {
     
-    var delegate: CustomLoginViewModelProtocol?
+    public var delegate: CustomLoginViewModelProtocol?
     
     @Published var userId: String?
     @Published var password: String?
@@ -38,7 +38,7 @@ class CustomLoginViewModel: ObservableObject {
     @Published var showSignupView: Bool = false
     
     
-    init() {
+    public init() {
         
     }
     
@@ -79,7 +79,7 @@ extension CustomLoginViewModel {
 
 // MARK: Model -> ViewModel
 extension CustomLoginViewModel {
-    func didGetOTPLoginResponse(withSuccess: Bool, errorMessage: String?) {
+    public func didGetOTPLoginResponse(withSuccess: Bool, errorMessage: String?) {
         self.showLoader = false
         if let errorMessage {
             self.errorMessage = errorMessage
@@ -90,7 +90,7 @@ extension CustomLoginViewModel {
         }
     }
     
-    func didGetEmailLoginResponse(withSuccess: Bool, errorMessage: String?) {
+    public func didGetEmailLoginResponse(withSuccess: Bool, errorMessage: String?) {
         self.showLoader = false
         if let errorMessage {
             self.errorMessage = errorMessage

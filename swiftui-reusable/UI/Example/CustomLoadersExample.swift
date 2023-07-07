@@ -10,6 +10,8 @@ import SwiftUI
 struct CustomLoadersExample: View {
     @State var isAnimating: Bool = false
     
+    @State var loaders: [CustomLoaderType] = [.arcs, .bars, .blinking, .classic, .rotatingShapes, .rowOfShapes]
+    
     let width: Double = 60
     let height: Double = 60
     var body: some View {
@@ -21,23 +23,10 @@ struct CustomLoadersExample: View {
                 Text(isAnimating ? "Stop Animating" : "Animate")
             }
             
-            Arcs(animate: self.$isAnimating)
-                .frame(width: width, height: height)
-            
-            Bars(animate: self.$isAnimating)
-                .frame(width: width, height: height)
-            
-            Blinking(animate: self.$isAnimating)
-                .frame(width: width, height: height)
-            
-            Classic(animate: self.$isAnimating)
-                .frame(width: width, height: height)
-            
-            RotatingShapes(animate: self.$isAnimating)
-                .frame(width: width, height: height)
-            
-            RowOfShapes(animate: self.$isAnimating)
-                .frame(width: width, height: height)
+            ForEach(loaders, id: \.self) { loader in
+                loader.loader(binder: $isAnimating)
+                    .frame(width: width, height: height)
+            }
         }
     }
 }
@@ -46,33 +35,5 @@ struct CustomLoadersExample: View {
 struct CustomLoadersExample_Previews: PreviewProvider {
     static var previews: some View {
         CustomLoadersExample()
-    }
-}
-
-public enum CustomLoaderType {
-    case basic, arcs, bars, blinking, classic, rotatingShapes, rowOfShapes
-    
-    func loader(binder: Binding<Bool>) -> some View {
-        return VStack {
-            switch self {
-            case .basic:
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .padding()
-                    .tint(Color.black)
-            case .arcs:
-                Arcs(animate: binder)
-            case .bars:
-                Bars(animate: binder)
-            case .blinking:
-                Blinking(animate: binder)
-            case .classic:
-                Classic(animate: binder)
-            case .rotatingShapes:
-                RotatingShapes(animate: binder)
-            case .rowOfShapes:
-                RowOfShapes(animate: binder)
-            }
-        }
     }
 }
