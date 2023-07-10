@@ -38,6 +38,20 @@ struct ParentView: View {
                     Text("Login Screen")
                 }
             }
+            
+            NavigationLink {
+                ConcentricOnboardingView(pageContents: MockData.pages.map { (PageView(page: $0), $0.color) })
+                    .duration(1.0)
+                    .nextIcon("chevron.forward")
+                    .animationDidEnd {
+                        print("Animation Did End")
+                    }
+            } label: {
+                HStack {
+                    Image(systemName: "applescript.fill")
+                    Text("Concentric Onboarding")
+                }
+            }
         } label: {
             HStack {
                 Image(systemName: "iphone.gen1")
