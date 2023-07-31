@@ -11,9 +11,9 @@ class CustomLoginViewModel: ObservableObject {
     
     public var delegate: CustomLoginViewModelProtocol?
     
-    @Published var userId: String?
-    @Published var password: String?
-    @Published var phoneNumber: String?
+    @Published var userId: String = ""
+    @Published var password: String = ""
+    @Published var phoneNumber: String = ""
     @Published var otp: String?
     @Published var loginType: LoginType = .email
     
@@ -36,6 +36,10 @@ class CustomLoginViewModel: ObservableObject {
     
     // Toggles
     @Published var showSignupView: Bool = false
+    
+    // Country Code
+    @Published var selectedCountryCode: String = "IN"
+    @Published var showCountryCodeList: Bool = false
     
     
     public init() {
@@ -99,5 +103,42 @@ extension CustomLoginViewModel {
             // Navigate in case of success
             print("Login Successful with Email credentials")
         }
+    }
+}
+
+extension CustomLoginViewModel {
+    func getCountryCodes() {
+        let countryCodes = NSLocale.isoCountryCodes
+        print(countryCodes)
+    }
+    
+    
+    func getSelectedFlag() -> String {
+        return String(String.UnicodeScalarView(self.selectedCountryCode.unicodeScalars.compactMap {
+            UnicodeScalar(127397 + $0.value)
+          }))
+    }
+    
+    func getFlag(forCountryCode code: String) -> String {
+        return String(String.UnicodeScalarView(code.unicodeScalars.compactMap {
+            UnicodeScalar(127397 + $0.value)
+          }))
+    }
+    
+    func getCountryPhoneCode(forCountryCode code: String) -> String {
+        if let path = Bundle.main.path(forResource: "countryCodes", ofType: "json") {
+            do {
+                  let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                  let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                  if let jsonResult = jsonResult as? Dictionary<String, String>{
+                            return jsonResult[code] ?? "+91"
+                  }
+              } catch {
+                   // handle error
+                  print("Error in getting Country phone code", error.localizedDescription)
+              }
+        }
+        
+        return "+919"
     }
 }

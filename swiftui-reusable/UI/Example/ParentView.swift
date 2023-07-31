@@ -40,6 +40,15 @@ struct ParentView: View {
             }
             
             NavigationLink {
+                ThemedLoginView1()
+            } label: {
+                HStack {
+                    Image(systemName: "lock.desktopcomputer")
+                    Text("Themed Login Screen 1")
+                }
+            }
+            
+            NavigationLink {
                 ConcentricOnboardingView(pageContents: MockData.pages.map { (PageView(page: $0), $0.color) })
                     .duration(1.0)
                     .nextIcon("chevron.forward")

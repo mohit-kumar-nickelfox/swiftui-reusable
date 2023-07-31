@@ -1,0 +1,196 @@
+//
+//  ThemedLoginView1.swift
+//  swiftui-reusable
+//
+//  Created by Mohit Kumar Singh on 18/07/23.
+//
+
+import SwiftUI
+
+struct ThemedLoginView1: View {
+    // MARK: - Propertiers
+    @State var securePassword: Bool = true
+    
+    @ObservedObject var viewModel = CustomLoginViewModel()
+    
+    @State var phoneErrorText: String = ""
+    @State var passwordErrorText: String = ""
+    
+    
+    
+    // MARK: - View
+    var body: some View {
+        VStack() {
+            Text("Welcome to Rocket")
+                .font(.largeTitle).foregroundColor(Color.white)
+                .padding([.top, .bottom], 40)
+                .shadow(radius: 10.0, x: 20, y: 10)
+            
+            Image("login_sample_image")
+                .resizable()
+                .frame(width: 250, height: 250)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                .shadow(radius: 10.0, x: 20, y: 10)
+                .padding(.bottom, 50)
+            
+            VStack(alignment: .leading, spacing: 30) {
+                VStack {
+                    HStack {
+                        
+                        VStack {
+                            
+                            Button {
+                                self.viewModel.showCountryCodeList = true
+                            } label: {
+                                HStack {
+                                    Text(self.viewModel.getSelectedFlag())
+                                    Text(self.countryPhoneCode)
+                                        .foregroundColor(.black)
+                                }
+                            }
+                            .sheet(isPresented: self.$viewModel.showCountryCodeList) {
+                                self.countryCodeListView
+                            }
+
+                            
+                        }.frame(width: 80, height: 54)
+                            .background(Color.themeTextField)
+                            .cornerRadius(20)
+                            .shadow(radius: 10.0, x: 20, y: 10)
+                        TextField("Phone", text: self.$viewModel.phoneNumber)
+                            .padding()
+                            .background(Color.themeTextField)
+                            .cornerRadius(20.0)
+                            .shadow(radius: 10.0, x: 20, y: 10)
+                            .textContentType(.telephoneNumber)
+                        .keyboardType(.phonePad)
+                    }
+                    HStack {
+                        Text(phoneErrorText).padding(.leading, 105)
+                            .font(.caption).fontWeight(.bold)
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                }
+                
+                VStack {
+                    ZStack {
+                        
+                        if securePassword {
+                            SecureField("Password", text: self.$viewModel.password)
+                                .padding()
+                                .background(Color.themeTextField)
+                                .cornerRadius(20.0)
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                                .textContentType(.password)
+                            .keyboardType(.emailAddress)
+                        } else {
+                            TextField("Password", text: self.$viewModel.password)
+                                .padding()
+                                .background(Color.themeTextField)
+                                .cornerRadius(20.0)
+                                .shadow(radius: 10.0, x: 20, y: 10)
+                                .textContentType(.password)
+                            .keyboardType(.emailAddress)
+                        }
+                        
+                        HStack {
+                            
+                            Spacer()
+                            
+                            Button {
+                                self.securePassword.toggle()
+                            } label: {
+                                HStack {
+                                    Image(systemName: securePassword ? "eye" : "eye.slash")
+                                        .resizable()
+                                        .frame(width: 26, height: 18)
+                                        .padding(15)
+                                    .foregroundColor(.black)
+                                }.opacity(0.3)
+                            }
+                        }
+                        
+                    }
+                    .frame(height: 46)
+                    HStack {
+                        Text(passwordErrorText).padding(.leading, 25)
+                            .font(.caption).fontWeight(.bold)
+                            .foregroundColor(.red)
+                        Spacer()
+                    }
+                }
+            }.padding([.leading, .trailing], 27.5)
+            
+            Button(action: {}) {
+                Text("Sign In")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(width: 300, height: 50)
+                    .background(Color.green)
+                    .cornerRadius(15.0)
+                    .shadow(radius: 10.0, x: 20, y: 10)
+            }.padding(.top, 50)
+            
+            Spacer()
+            HStack(spacing: 0) {
+                Text("Don't have an account? ")
+                Button(action: {}) {
+                    Text("Sign Up")
+                        .foregroundColor(.black)
+                }
+            }
+        }
+        .background(
+            LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all))
+        .onChange(of: self.viewModel.phoneNumber) { newValue in
+            self.phoneErrorText = newValue.isValidPhone
+            ? ""
+            : "Invalid phone"
+        }
+        .onChange(of: self.viewModel.password) { newValue in
+            self.passwordErrorText = newValue.count >= 5
+            ? ""
+            : "Password should be more than 5 characters long"
+        }
+        .onAppear {
+            self.viewModel.getCountryCodes()
+        }
+        
+    }
+    
+    var countryCodeListView: some View {
+        NavigationView {
+            CountryCodeListView(selectedCountryCode: self.$viewModel.selectedCountryCode, showCountryCodeList: self.$viewModel.showCountryCodeList)
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button {
+                            self.viewModel.showCountryCodeList = false
+                        } label: {
+                            Text("Done")
+                        }
+
+                    }
+                }
+        }
+    }
+    
+    var countryPhoneCode: String {
+        return self.viewModel.getCountryPhoneCode(forCountryCode: self.viewModel.selectedCountryCode)
+    }
+}
+
+extension Color {
+    static var themeTextField: Color {
+        return Color(red: 220.0/255.0, green: 230.0/255.0, blue: 230.0/255.0, opacity: 1.0)
+    }
+}
+
+struct ThemedLoginView1_Previews: PreviewProvider {
+    static var previews: some View {
+        ThemedLoginView1()
+    }
+}

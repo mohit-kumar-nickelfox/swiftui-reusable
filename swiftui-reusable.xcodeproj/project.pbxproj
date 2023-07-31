@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E60244CC2A667AD1009911EA /* ThemedLoginView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60244CB2A667AD1009911EA /* ThemedLoginView1.swift */; };
+		E60244CF2A667B31009911EA /* CountryCodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60244CE2A667B31009911EA /* CountryCodeListView.swift */; };
 		E60744502A52A19600FBE7A2 /* CustomLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607444F2A52A19600FBE7A2 /* CustomLoginViewModel.swift */; };
 		E60744532A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744522A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift */; };
 		E60744582A52AD8F00FBE7A2 /* LoginViewExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744572A52AD8F00FBE7A2 /* LoginViewExample.swift */; };
 		E607445F2A52D0F700FBE7A2 /* SegmentedLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E607445E2A52D0F700FBE7A2 /* SegmentedLoginView.swift */; };
 		E60744612A52D6FA00FBE7A2 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744602A52D6FA00FBE7A2 /* LoginType.swift */; };
 		E60744632A53E5E500FBE7A2 /* PhoneOTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60744622A53E5E500FBE7A2 /* PhoneOTPView.swift */; };
+		E60818862A778B5100128A19 /* countryCodes.json in Resources */ = {isa = PBXBuildFile; fileRef = E60818852A778B5100128A19 /* countryCodes.json */; };
+		E60818882A778BB600128A19 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60818872A778BB500128A19 /* Bundle+Extension.swift */; };
 		E649F2CD2A5456DD00D5630E /* ParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E649F2CC2A5456DD00D5630E /* ParentView.swift */; };
 		E689D30D2A553FCA0077C37D /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D30C2A553FCA0077C37D /* CustomSlider.swift */; };
 		E689D30F2A5555610077C37D /* CustomButtonsExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689D30E2A5555610077C37D /* CustomButtonsExample.swift */; };
@@ -75,12 +79,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E60244CB2A667AD1009911EA /* ThemedLoginView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedLoginView1.swift; sourceTree = "<group>"; };
+		E60244CE2A667B31009911EA /* CountryCodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeListView.swift; sourceTree = "<group>"; };
 		E607444F2A52A19600FBE7A2 /* CustomLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginViewModel.swift; sourceTree = "<group>"; };
 		E60744522A52A47200FBE7A2 /* CustomLoginViewUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginViewUIProtocol.swift; sourceTree = "<group>"; };
 		E60744572A52AD8F00FBE7A2 /* LoginViewExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewExample.swift; sourceTree = "<group>"; };
 		E607445E2A52D0F700FBE7A2 /* SegmentedLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedLoginView.swift; sourceTree = "<group>"; };
 		E60744602A52D6FA00FBE7A2 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
 		E60744622A53E5E500FBE7A2 /* PhoneOTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOTPView.swift; sourceTree = "<group>"; };
+		E60818852A778B5100128A19 /* countryCodes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countryCodes.json; sourceTree = "<group>"; };
+		E60818872A778BB500128A19 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		E649F2CC2A5456DD00D5630E /* ParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentView.swift; sourceTree = "<group>"; };
 		E689D30C2A553FCA0077C37D /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		E689D30E2A5555610077C37D /* CustomButtonsExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonsExample.swift; sourceTree = "<group>"; };
@@ -153,6 +161,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E60244CD2A667B1F009911EA /* CountryCode */ = {
+			isa = PBXGroup;
+			children = (
+				E60244CE2A667B31009911EA /* CountryCodeListView.swift */,
+				E60818852A778B5100128A19 /* countryCodes.json */,
+			);
+			path = CountryCode;
+			sourceTree = "<group>";
+		};
 		E60744512A52A45B00FBE7A2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +217,7 @@
 				E607445E2A52D0F700FBE7A2 /* SegmentedLoginView.swift */,
 				E60744622A53E5E500FBE7A2 /* PhoneOTPView.swift */,
 				E689D3102A5570490077C37D /* CustomSignupView.swift */,
+				E60244CB2A667AD1009911EA /* ThemedLoginView1.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -400,6 +418,7 @@
 		E6E5CB662A4D55AD00EA0031 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E60244CD2A667B1F009911EA /* CountryCode */,
 				E6C1446D2A5BCE4C008825AD /* Onboarding */,
 				E60744512A52A45B00FBE7A2 /* Login */,
 			);
@@ -414,6 +433,7 @@
 				E60744602A52D6FA00FBE7A2 /* LoginType.swift */,
 				E689D3172A5676FB0077C37D /* ImagePicker.swift */,
 				E689D31B2A5687920077C37D /* KeyboardAdaptive.swift */,
+				E60818872A778BB500128A19 /* Bundle+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -522,6 +542,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E60818862A778B5100128A19 /* countryCodes.json in Resources */,
 				E6E5CB422A4D523A00EA0031 /* Preview Assets.xcassets in Resources */,
 				E6E5CB3F2A4D523A00EA0031 /* Assets.xcassets in Resources */,
 			);
@@ -557,7 +578,9 @@
 				E6C144752A5BCEB5008825AD /* AnimatableShape.swift in Sources */,
 				E689D3382A56DD150077C37D /* RowOfShapes.swift in Sources */,
 				E6E5CB3B2A4D523900EA0031 /* swiftui_reusableApp.swift in Sources */,
+				E60818882A778BB600128A19 /* Bundle+Extension.swift in Sources */,
 				E689D3402A5708E20077C37D /* CustomScreen.swift in Sources */,
+				E60244CF2A667B31009911EA /* CountryCodeListView.swift in Sources */,
 				E689D3422A5709070077C37D /* CustomComponents.swift in Sources */,
 				E689D3472A5815780077C37D /* TextfieldEditorView.swift in Sources */,
 				E689D3222A56B2860077C37D /* CustomEditorView.swift in Sources */,
@@ -581,6 +604,7 @@
 				E689D31A2A5677500077C37D /* ProfileImageView.swift in Sources */,
 				E689D3302A56DB3B0077C37D /* Bars.swift in Sources */,
 				E6E5CB6A2A4D5F8F00EA0031 /* CustomLoginView.swift in Sources */,
+				E60244CC2A667AD1009911EA /* ThemedLoginView1.swift in Sources */,
 				E689D3272A56C9140077C37D /* CustomEditorView+Components.swift in Sources */,
 				E60744632A53E5E500FBE7A2 /* PhoneOTPView.swift in Sources */,
 				E689D31F2A56AF0C0077C37D /* CustomSignupView+Unused.swift in Sources */,

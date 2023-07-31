@@ -27,6 +27,10 @@ struct CustomEditorView: View {
     
     @State var showEditor: Bool = true
     
+    @State var userId: String = ""
+    @State var password: String = ""
+    @State var phone: String = ""
+    
     @State var openTextFieldEditor: Bool = false
     var body: some View {
         ZStack {
@@ -98,9 +102,9 @@ extension CustomEditorView {
             textfieldCornerRadius: self.$textfieldCornerRadius,
             textfieldTextFont: self.$textfieldTextFont,
             textfieldTextColor: self.$textfieldTextColor,
-            userId: .constant(""),
-            password: .constant(""),
-            phone: .constant(""))
+            userId: self.$userId,
+            password: self.$password,
+            phone: self.$phone)
         return loginView
     }
     

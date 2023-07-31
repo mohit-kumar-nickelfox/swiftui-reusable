@@ -202,13 +202,6 @@ extension CustomLoginView {
                 : "Invalid Password"
                 self.enableLoginButton()
             }
-            
-            .autocorrectionDisabled()
-            Text(self.passwordErrorText)
-                .foregroundColor(.red)
-                .font(.caption)
-                .padding(.top, -5)
-                .padding(.leading, 20)
         }
     }
     
