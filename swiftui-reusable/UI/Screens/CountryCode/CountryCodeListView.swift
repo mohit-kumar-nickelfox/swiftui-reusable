@@ -18,6 +18,7 @@ struct CountryCodeListView: View {
     var body: some View {
         VStack {
             TextField("Search Country", text: self.$searchText)
+                .padding(.horizontal, 20)
             List(NSLocale.isoCountryCodes, id: \.self) { countryCode in
                 
                 

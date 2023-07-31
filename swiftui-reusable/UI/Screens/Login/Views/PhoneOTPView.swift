@@ -114,7 +114,7 @@ public struct PhoneOTPView: View {
                             Text(self.otp[index])
                                 .foregroundColor(.black)
                         }
-                        .frame(width: 30, height: 40)
+                        .frame(width: otpViewWidth, height: otpViewWidth)
                         .overlay(
                             RoundedRectangle(cornerRadius: cornerRadius ?? 4)
                                 .stroke(
@@ -130,7 +130,7 @@ public struct PhoneOTPView: View {
                         transaction.disablesAnimations = true
                     }
                 }
-            }
+            }.padding(.horizontal, 20)
         }
     }
     
@@ -145,6 +145,16 @@ public struct PhoneOTPView: View {
         .disabled(self.verifyButtonDisabled)
         .foregroundColor(.black)
         
+    }
+    
+    var otpViewWidth: Double {
+        let horizontalPadding: Double = 40
+        let interItemSpacing: Double = 12
+        
+        
+        let actualWidth: Double = UIScreen.main.bounds.size.width - horizontalPadding
+        let widthAfterSpacing: Double = actualWidth - (interItemSpacing*Double(self.otpCount))
+        return min(widthAfterSpacing/Double(self.otpCount), 60)
     }
 }
 
